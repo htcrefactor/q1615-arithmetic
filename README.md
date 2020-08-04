@@ -3,7 +3,7 @@
 첫 번째 프로젝트 : fix_s16_15
 sign bit를 포함한 fixed point 수의  fixed point arithmetic 구현
 
-##역할 분담
+## 역할 분담
 
 | 조원이름 | 역할분담 |
 | ---- | ---- |
@@ -11,7 +11,7 @@ sign bit를 포함한 fixed point 수의  fixed point arithmetic 구현
 | 김지원 | fixed point arithmetic 사칙연산 구현 |
 | 조시호 | README 파일 작성 |
 
-##What is fix_s16_15?
+## What is fix_s16_15?
 
 | decimal | to | s16_15 |
 | ---- | ---- | ---- |
@@ -20,9 +20,9 @@ sign bit를 포함한 fixed point 수의  fixed point arithmetic 구현
 
 
 
-##Fixed point arithmetic
+## Fixed point arithmetic
 
-###연산
+### 연산
 1. 덧셈
 
 2. 뺄셈
@@ -32,7 +32,7 @@ sign bit를 포함한 fixed point 수의  fixed point arithmetic 구현
 4. 나눗셈
 
 
-###함수
+### 함수
 1. Sine
 
 2. Sqrt
@@ -44,7 +44,7 @@ sign bit를 포함한 fixed point 수의  fixed point arithmetic 구현
 5. ln
 
 
-###변환
+### 변환
 
-###상수
+### 상수
 
