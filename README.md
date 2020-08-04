@@ -14,7 +14,7 @@ sign bit를 포함한 fixed point 수의  fixed point arithmetic 구현
 ##What is fix_s16_15?
 
 | decimal | to | s16_15 |
-| ---- | ----> | ---- |
+| ---- | ---- | ---- |
 | 1000000 | ----> | 30.5175781 |
 | 2000000 | ----> | 61.0351562 |
 
