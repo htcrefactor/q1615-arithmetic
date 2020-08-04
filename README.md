@@ -1,15 +1,15 @@
 # battle_c_1
 
 첫 번째 프로젝트 : fix_s16_15
-sign bit를 포함한 fixed point 수의  fixed point arithmetic 구현
+sign bit를 포함한 fixed point 수의 arithmetic 구현
 
 ## 역할 분담
 
-| 조원이름 | 역할분담 |
-| ---- | ---- |
-| 고예준 | README 파일 작성 |
-| 김지원 | fixed point arithmetic 사칙연산 구현 |
-| 조시호 | README 파일 작성 |
+| 조원이름 | 학번 | 역할분담 |
+| ---- | ---- | ---- |
+| 고예준 | 201820742 | README 파일 작성 |
+| 김지원 | 201720771 | fixed point arithmetic 사칙연산 구현 |
+| 조시호 | 201520659 | README 파일 작성 |
 
 ## What is fix_s16_15?
 
