@@ -8,7 +8,7 @@ sign bit를 포함한 fixed point 수의 arithmetic 구현
 | 조원이름 | 학번 | 역할분담 |
 | ---- | ---- | ---- |
 | 고예준 | 201820742 | README 파일 작성 |
-| 김지원 | 201720771 | fixed point arithmetic 사칙연산 구현 |
+| 김지원 | 201720771 | fixed point arithmetic 구현 |
 | 조시호 | 201520659 | README 파일 작성 |
 
 ## What is fixed point sXXYY?
@@ -38,30 +38,30 @@ s1615를 10진수로 표현하는 방법은 간단하다.
 
 ## Fixed point arithmetic
 
-### mecro
+### macro
 p2_15 32768.0   // 2^15
 15자리를 shifting하기 위해 필요한 2^15를 정의
 
 
 fx_s1615_to_double(a)
-fx_s1615로 표현한 숫자를 double로 형변환하는 mecro 함수
+fx_s1615로 표현한 숫자를 double로 형변환하는 macro 함수
 
 double_to_fx_s1615(a) 
-double로 표현한 숫자를 fx_s1615로 형변환하는 mecro 함수
+double로 표현한 숫자를 fx_s1615로 형변환하는 macro 함수
 
 
 
 fx_add(a, b) 
-fx_s1615로 표현된 두 값을 더해주는 mecro 함수
+fx_s1615로 표현된 두 값을 더해주는 macro 함수
 
 fx_sub(a, b)
-fx_s1615로 표현된 두 값을 빼는 mecro 함수
+fx_s1615로 표현된 두 값을 빼는 macro 함수
 
 fx_mul(a, b) 
-fx_s1615로 표현된 두 값을 곱해주는 mecro 함수
+fx_s1615로 표현된 두 값을 곱해주는 macro 함수
 
 fx_div(a, b) 
-fx_s1615로 표현된 두 값을 나눠주는 mecro 함수
+fx_s1615로 표현된 두 값을 나눠주는 macro 함수
 
 
 ### function
