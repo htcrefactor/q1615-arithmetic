@@ -3,23 +3,23 @@
 
 int main() {
 
-    double a = 60.0, b = 30.0;
-    fx_s1615 fxa = double_to_fx_s1615(a), fxb = double_to_fx_s1615(b);
+    double a = 20.0, b = 30.0;
+    fx_s1615 fxa = FX_S1615_DOUBLE_TO_INT(a), fxb = FX_S1615_DOUBLE_TO_INT(b);
     printf("%f %d %f %d\n", a, fxa, b, fxb);
-    fx_s1615 fxc = fx_div(fxa, fxb);
-    printf("%d %f\n", fxc, fx_s1615_to_double(fxc));
+    fx_s1615 fxc = FX_S1615_DIV(fxa, fxb);
+    printf("%d %f\n", fxc, FX_S1615_INT_TO_DOUBLE(fxc));
     
-    double d = 81.0;
-    fx_s1615 fxd = double_to_fx_s1615(d);
-    printf("%f %f\n", fx_s1615_to_double(fxd), fx_s1615_to_double(fx_sqrt(fxd)));
+    double d = 50.0;
+    fx_s1615 fxd = FX_S1615_DOUBLE_TO_INT(d);
+    printf("%f %f\n", FX_S1615_INT_TO_DOUBLE(fxd), FX_S1615_INT_TO_DOUBLE(sqrt_fx_s1615_int(fxd)));
 
     double e = 3.0;
-    fx_s1615 fxe = double_to_fx_s1615(e);
-    printf("%f %f\n", fx_s1615_to_double(fxe), fx_s1615_to_double(fx_power(fxe, 3)));
+    fx_s1615 fxe = FX_S1615_DOUBLE_TO_INT(e);
+    printf("%f %f\n", FX_S1615_INT_TO_DOUBLE(fxe), FX_S1615_INT_TO_DOUBLE(power_fx_s1615_int(fxe, 4)));
 
-    double f = 45.0;
-    fx_s1615 fxf = double_to_fx_s1615(f);
-    printf("%f %f\n", fx_s1615_to_double(fxf), fx_s1615_to_double(fx_sine(fxf)));
+    double f = 30.0;
+    fx_s1615 fxf = FX_S1615_DOUBLE_TO_INT(f);
+    printf("%f %f\n", FX_S1615_INT_TO_DOUBLE(fxf), FX_S1615_INT_TO_DOUBLE(sine_fx_s1615_int(fxf)));
     return 0;
 
 }

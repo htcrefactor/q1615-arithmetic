@@ -4,18 +4,18 @@
 #define PI 3.14159265359
 #define INV_PI (1 / PI)
 
-fx_s1615 fx_sine(fx_s1615 a) {
-    double fa = fx_s1615_to_double(a);
+fx_s1615 sine_fx_s1615_int(fx_s1615 a) {
+    double fa = FX_S1615_INT_TO_DOUBLE(a);
     fa *= PI / 180;
-    return double_to_fx_s1615(sin((fa)));
+    return FX_S1615_DOUBLE_TO_INT(sin((fa)));
 }
 
-fx_s1615 fx_sqrt(fx_s1615 a) {
-    double fxa = fx_s1615_to_double(a);
-    return double_to_fx_s1615(sqrt(fxa));
+fx_s1615 sqrt_fx_s1615_int(fx_s1615 a) {
+    double fxa = FX_S1615_INT_TO_DOUBLE(a);
+    return FX_S1615_DOUBLE_TO_INT(sqrt(fxa));
 }
 
-fx_s1615 fx_power(fx_s1615 a, double n) {
-    double fa = fx_s1615_to_double(a);
-    return double_to_fx_s1615(pow(fa, n));
+fx_s1615 power_fx_s1615_int(fx_s1615 a, double n) {
+    double fa = FX_S1615_INT_TO_DOUBLE(a);
+    return FX_S1615_DOUBLE_TO_INT(pow(fa, n));
 }
