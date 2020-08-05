@@ -39,40 +39,50 @@ s1615를 10진수로 표현하는 방법은 간단하다.
 ## Fixed point arithmetic
 
 ### macro
-p2_15 32768.0   // 2^15
-15자리를 shifting하기 위해 필요한 2^15를 정의
+* P2_15 32768.0   // 2^15
+
+    15자리를 shifting하기 위해 필요한 2^15를 정의
 
 
-fx_s1615_to_double(a)
-fx_s1615로 표현한 숫자를 double로 형변환하는 macro 함수
+* FX_S1615_INT_TO_DOUBLE(a) 
 
-double_to_fx_s1615(a) 
-double로 표현한 숫자를 fx_s1615로 형변환하는 macro 함수
+    fx_s1615로 표현한 숫자를 double로 형변환하는 macro 함수
+
+* FX_S1615_DOUBLE_TO_INT(a)
+
+    double로 표현한 숫자를 fx_s1615로 형변환하는 macro 함수
 
 
 
-fx_add(a, b) 
-fx_s1615로 표현된 두 값을 더해주는 macro 함수
+* FX_S1615_ADD(a, b)
 
-fx_sub(a, b)
-fx_s1615로 표현된 두 값을 빼는 macro 함수
+    fx_s1615로 표현된 두 값을 더해주는 macro 함수
 
-fx_mul(a, b) 
-fx_s1615로 표현된 두 값을 곱해주는 macro 함수
+* FX_S1615_SUB(a, b)
 
-fx_div(a, b) 
-fx_s1615로 표현된 두 값을 나눠주는 macro 함수
+    fx_s1615로 표현된 두 값을 빼는 macro 함수
 
+* FX_S1615_MUL(a, b)
+
+    fx_s1615로 표현된 두 값을 곱해주는 macro 함수
+
+* FX_S1615_DIV(a, b)
+
+    fx_s1615로 표현된 두 값을 나눠주는 macro 함수   
+   
 
 ### function
-fx_s1615 fx_sine(fx_s1615 a);
-fx_s1615로 표현된 값의 sin 을 구해주는 함수
+* fx_s1615 sine_fx_s1615_int(fx_s1615 a);
 
-fx_s1615 fx_sqrt(fx_s1615 a);
-fx_s1615로 표현된 값의 제곱근을 구해주는 함수
+    fx_s1615로 표현된 값의 sin 을 구해주는 함수
 
-fx_s1615 fx_power(fx_s1615 a, double n);
-fx_s1615로 표현된 값의 n승을 구해주는 함수
+* fx_s1615 sqrt_fx_s1615_int(fx_s1615 a);
+
+    fx_s1615로 표현된 값의 제곱근을 구해주는 함수
+
+* fx_s1615 power_fx_s1615_int(fx_s1615 a, double n);
+
+    fx_s1615로 표현된 값의 n승을 구해주는 함수
 
 
 
