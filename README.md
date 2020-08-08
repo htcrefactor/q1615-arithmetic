@@ -114,4 +114,61 @@ s1615를 10진수로 표현하는 방법은 간단하다.
     fx_s1615로 표현된 값의 n승을 구해주는 함수
 
 
+### Makefile
+
+1. define : 코드의 재사용성을 증가시키기 위해 반복되는 내용을 정의한다.
+```
+SRCS := test.c fx_s1615_double.c
+OBJS := $(SRCS:.c=.o)
+CC := gcc	# pre-defined macro can be redefined!
+#CFLAGS = -c -Wall -g
+CFLAGS = -c -DTEST -Wall 
+```
+<br>
+<br>
+
+
+2. 실행 파일 생성  
+* $@ : 현재의 target 파일명 
+* $^ : 현재 모든 의존 파일들의 명단
+* -lm : <math.h> library 추가      
+![image](/uploads/39a775cf74f8403d3fbf97ef7b7212f2/image.png)
+
+``` 
+test : $(OBJS)
+	$(CC) -o $@ $^ -lm
+```
+<br>
+<br>
+
+
+3. 확장자 규칙 적용 : 일일히 목적 파일들을 gcc로 컴파일하지 않아도 된다. 
+* $< : 의존 파일 중 첫번째 파일명   
+```
+# default rule
+.c.o : 
+	$(CC) $(CFLAGS) $< -lm
+```
+
+<br>
+<br>
+
+
+4. make clean :  make clean하면 .o파일과 실행파일을 지워준다.
+```
+# dummy target - no dependency 
+clean : 
+	-rm $(OBJS)
+```
+
+<br>
+<br>
+
+
+5. make dep : 각 SRCS에 정의된, 필요한 header 파일들을 찾아준다. 
+```
+# dummy target - no dependency 
+dep :
+	gccmakedep ${SRCS}
+```
 
