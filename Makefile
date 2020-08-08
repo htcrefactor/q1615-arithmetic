@@ -14,6 +14,7 @@ test : $(OBJS)
 # dummy target - no dependency 
 clean : 
 	-rm $(OBJS)
+	-rm test
 
 # dummy target - no dependency 
 dep :
