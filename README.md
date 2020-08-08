@@ -114,7 +114,7 @@ s1615를 10진수로 표현하는 방법은 간단하다.
     fx_s1615로 표현된 값의 n승을 구해주는 함수
 
 
-### Makefile
+## Makefile
 
 1. define : 코드의 재사용성을 증가시키기 위해 반복되는 내용을 정의한다.
 ```
@@ -154,31 +154,34 @@ test : $(OBJS)
 <br>
 
 
-4. make clean :  make clean하면 .o파일과 실행파일을 지워준다.
+4. make clean :  .o파일과 실행파일을 지워준다.
 ```
 # dummy target - no dependency 
 clean : 
 	-rm $(OBJS)
+	-rm test
 ```
 
 <br>
 <br>
 
 
-5. make dep : 각 SRCS에 정의된, 필요한 header 파일들을 찾아준다. 
+5. make dep : SRCS에 정의된 파일들이 의존하는 파일을 찾아준다. 
 ```
 # dummy target - no dependency 
 dep :
-	gccmakedep ${SRCS}
+	gccmakedep ${SRCS}  # dependency check
 ```
 
-## -O flag 최적화 성능 비교
+## gcc -O flag
 ### -O 옵션별 세부 사항
+`[-Olevel]`
+- O0 : 최적화를 수행하지 않음 (Default)
 - O, -O1 : 코드 크기와 실행 시간을 줄이는 최적화만 수행
 - O2 : 메모리 공간과 속도를 희생하지 않는 범위 내의 모든 최적화를 수행
 - O3 : -O2 최적화에 인라인 함수와 레지스터에 대한 최적화를 추가로 수행
 - Os : -O2 최적화 기능을 사용하지만, 코드 크기를 증가하는 최적화는 제외
 
-### -O2 최적화 결과
+### -O2 최적화 성능 비교
 ![image](O2-optimization-result.png)
 - 호출 횟수: 2,147,483,648 (INT_MAX)
