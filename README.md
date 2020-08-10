@@ -201,7 +201,7 @@ pi@raspberrypi:~/battle_c_1 $ gcc -S -O2 -DTEST -lm test.c -o test_optimization.
 실제로 어셈블리 코드는 아직 link 되어있지 않기 때문에 clock 함수의 시그니처가 그대로 남아있었다.
 
 ![O2-optimization-assembly](O2-optimization-assembly.png)
-test.s에서는 main 라벨에서 처음 clock 함수를 호출한다. 이후 L2 라벨로 이동한뒤 C 코드에서 for문에 해당하는 L3 라벨로 이동하여 약 70줄의 어셈블리 코드를 실행하고나서야 clock 함수를 호출한다. 라벨을 이동하는 것을 제외하면 작성한 C코드와 로직상으로 다를바가 없다.   
-그런데 test_optimization.s에서는 main 라벨에서 첫 clock 함수 호출 이후 하나의 mov 명령을 수행하자마자 clock 함수를 호출한다. 최적화의 영향인지 for문을 그대로 사라져버렸다.   
+test.s는 main 라벨에서 처음 clock 함수를 호출한다. 이후 L2 라벨로 이동한뒤 C코드에서 for문에 해당하는 L3 라벨로 이동하고 70줄 가량의 어셈블리 코드를 실행하고 나서야 clock 함수를 호출한다. 라벨을 이동하는 것을 제외하면 C코드와 로직상 다른점이 없다.   
+그런데 test_optimization.s는 main 라벨에서 첫 clock 함수를 호출하고 하나의 mov 명령을 수행하자마자 다시 clock 함수를 호출한다. 최적화의 영향인지 for문이 그대로 사라져버렸다.   
 실제로 for문 내부에서 실행되는 코드들은 그 안에서만 연산될 뿐 for문 밖의 코드에 영향을 주지 못한다. 외부 변수에 연산의 결과를 저장하거나 출력하는 코드가 없기 때문이다.   
 -O2 옵션을 주어 컴파일 하였을 때 컴파일러가 이를 확인하고 어셈블리 코드에 포함시키지 않아 극단적인 성능 차이를 보여준 것으로 보인다.
