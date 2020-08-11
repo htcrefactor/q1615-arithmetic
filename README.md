@@ -186,7 +186,7 @@ dep :
 for문을 통하여 2,147,483,648(INT_MAX)번의 연산을 반복하는 코드를 작성하고 -O0과 -O2 옵션을 주어 컴파일 한 뒤 실행시간을 측정하였다.
 
 #### 결과
-![O2-optimization-result](O2-optimization-result.png)
+![O2-optimization-result](optimization-result.png)
 
 최적화를 하지 않았을 때 for문을 수행하는데 약 5분의 시간이 걸렸으나 -O2 옵션으로 최적화하였을 때 for문을 수행했는가 싶을 정도로 실행시간이 줄어들었음을 확인할 수 있었다.
 
