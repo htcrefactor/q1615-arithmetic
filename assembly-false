@@ -1,0 +1,141 @@
+	.section	__TEXT,__text,regular,pure_instructions
+	.build_version macos, 10, 15	sdk_version 10, 15, 6
+	.section	__TEXT,__literal8,8byte_literals
+	.p2align	3               ## -- Begin function main
+LCPI0_0:
+	.quad	4696837146684686336     ## double 1.0E+6
+LCPI0_3:
+	.quad	4674736413210574848     ## double 32768
+LCPI0_4:
+	.quad	4629137466983448576     ## double 30
+LCPI0_5:
+	.quad	4613937818241073152     ## double 3
+LCPI0_6:
+	.quad	4632233691727265792     ## double 50
+LCPI0_7:
+	.quad	4626322717216342016     ## double 20
+	.section	__TEXT,__literal16,16byte_literals
+	.p2align	4
+LCPI0_1:
+	.long	1127219200              ## 0x43300000
+	.long	1160773632              ## 0x45300000
+	.long	0                       ## 0x0
+	.long	0                       ## 0x0
+LCPI0_2:
+	.quad	4841369599423283200     ## double 4503599627370496
+	.quad	4985484787499139072     ## double 1.9342813113834067E+25
+	.section	__TEXT,__text,regular,pure_instructions
+	.globl	_main
+	.p2align	4, 0x90
+_main:                                  ## @main
+	.cfi_startproc
+## %bb.0:
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset %rbp, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register %rbp
+	subq	$144, %rsp
+	movl	$0, -4(%rbp)
+	callq	_clock
+	movq	%rax, -16(%rbp)
+	movq	$0, -24(%rbp)
+	movl	$0, -28(%rbp)
+LBB0_1:                                 ## =>This Inner Loop Header: Depth=1
+	cmpl	$2147483647, -28(%rbp)  ## imm = 0x7FFFFFFF
+	jge	LBB0_4
+## %bb.2:                               ##   in Loop: Header=BB0_1 Depth=1
+	movsd	LCPI0_3(%rip), %xmm0    ## xmm0 = mem[0],zero
+	movsd	LCPI0_4(%rip), %xmm1    ## xmm1 = mem[0],zero
+	movsd	LCPI0_5(%rip), %xmm2    ## xmm2 = mem[0],zero
+	movsd	LCPI0_6(%rip), %xmm3    ## xmm3 = mem[0],zero
+	movsd	LCPI0_7(%rip), %xmm4    ## xmm4 = mem[0],zero
+	movsd	%xmm4, -40(%rbp)
+	movsd	%xmm1, -48(%rbp)
+	movaps	%xmm0, %xmm4
+	mulsd	-40(%rbp), %xmm4
+	cvttsd2si	%xmm4, %eax
+	movl	%eax, -52(%rbp)
+	movaps	%xmm0, %xmm4
+	mulsd	-48(%rbp), %xmm4
+	cvttsd2si	%xmm4, %eax
+	movl	%eax, -56(%rbp)
+	cvtsi2sdl	-52(%rbp), %xmm4
+	divsd	%xmm0, %xmm4
+	cvtsi2sdl	-56(%rbp), %xmm5
+	divsd	%xmm0, %xmm5
+	divsd	%xmm5, %xmm4
+	mulsd	%xmm0, %xmm4
+	cvttsd2si	%xmm4, %eax
+	movl	%eax, -60(%rbp)
+	movsd	%xmm3, -72(%rbp)
+	movaps	%xmm0, %xmm3
+	mulsd	-72(%rbp), %xmm3
+	cvttsd2si	%xmm3, %eax
+	movl	%eax, -76(%rbp)
+	movsd	%xmm2, -88(%rbp)
+	movaps	%xmm0, %xmm2
+	mulsd	-88(%rbp), %xmm2
+	cvttsd2si	%xmm2, %eax
+	movl	%eax, -92(%rbp)
+	movsd	%xmm1, -104(%rbp)
+	mulsd	-104(%rbp), %xmm0
+	cvttsd2si	%xmm0, %eax
+	movl	%eax, -108(%rbp)
+	movl	-52(%rbp), %eax
+	addl	-56(%rbp), %eax
+	addl	-60(%rbp), %eax
+	addl	-76(%rbp), %eax
+	addl	-92(%rbp), %eax
+	addl	-108(%rbp), %eax
+	movslq	%eax, %rcx
+	movq	%rcx, -24(%rbp)
+## %bb.3:                               ##   in Loop: Header=BB0_1 Depth=1
+	movl	-28(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, -28(%rbp)
+	jmp	LBB0_1
+LBB0_4:
+	movsd	LCPI0_0(%rip), %xmm0    ## xmm0 = mem[0],zero
+	movsd	%xmm0, -128(%rbp)       ## 8-byte Spill
+	callq	_clock
+	movq	%rax, -120(%rbp)
+	movq	-24(%rbp), %rsi
+	leaq	L_.str(%rip), %rdi
+	xorl	%ecx, %ecx
+                                        ## kill: def $cl killed $cl killed $ecx
+	movb	%cl, %al
+	callq	_printf
+	movq	-120(%rbp), %rdx
+	movq	-16(%rbp), %rsi
+	subq	%rsi, %rdx
+	movq	%rdx, %xmm0
+	movaps	LCPI0_1(%rip), %xmm1    ## xmm1 = [1127219200,1160773632,0,0]
+	punpckldq	%xmm1, %xmm0    ## xmm0 = xmm0[0],xmm1[0],xmm0[1],xmm1[1]
+	movapd	LCPI0_2(%rip), %xmm1    ## xmm1 = [4.503599627370496E+15,1.9342813113834067E+25]
+	subpd	%xmm1, %xmm0
+	haddpd	%xmm0, %xmm0
+	movsd	-128(%rbp), %xmm1       ## 8-byte Reload
+                                        ## xmm1 = mem[0],zero
+	divsd	%xmm1, %xmm0
+	leaq	L_.str.1(%rip), %rdi
+	movl	%eax, -132(%rbp)        ## 4-byte Spill
+	movb	$1, %al
+	callq	_printf
+	xorl	%r8d, %r8d
+	movl	%eax, -136(%rbp)        ## 4-byte Spill
+	movl	%r8d, %eax
+	addq	$144, %rsp
+	popq	%rbp
+	retq
+	.cfi_endproc
+                                        ## -- End function
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"Dummy sum: %lld\n"
+
+L_.str.1:                               ## @.str.1
+	.asciz	"Total run time: %lf\n"
+
+
+.subsections_via_symbols

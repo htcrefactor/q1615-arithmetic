@@ -6,8 +6,9 @@
 int main() {
 
     clock_t start = clock();
-
+    long long sum = 0;
     for(int i = 0 ; i < INT_MAX ; i++) {
+        
         double a = 20.0, b = 30.0;
         fx_s1615 fxa = FX_S1615_DOUBLE_TO_INT(a), fxb = FX_S1615_DOUBLE_TO_INT(b);
 #ifndef TEST
@@ -32,12 +33,13 @@ int main() {
 #ifndef TEST
         printf("%f %f\n", FX_S1615_INT_TO_DOUBLE(fxf), FX_S1615_INT_TO_DOUBLE(sine_fx_s1615_int(fxf)));    
 #endif
+        sum = fxa + fxb + fxc + fxd + fxe + fxf;
     }
-
     clock_t end = clock();
+    
+    printf("Dummy sum: %lld\n", sum);
 
     printf("Total run time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
     
     return 0;
-
 }
