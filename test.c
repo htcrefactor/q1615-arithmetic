@@ -14,24 +14,24 @@ int main() {
         printf("%f %d %f %d\n", a, fxa, b, fxb);
 #endif
         fx_s1615 fxc = FX_S1615_DIV(fxa, fxb);
-        #ifndef TEST
+#ifndef TEST
         printf("%d %f\n", fxc, FX_S1615_INT_TO_DOUBLE(fxc));
-      #endif  
+#endif  
         double d = 50.0;
         fx_s1615 fxd = FX_S1615_DOUBLE_TO_INT(d);
-        #ifndef TEST
+#ifndef TEST
         printf("%f %f\n", FX_S1615_INT_TO_DOUBLE(fxd), FX_S1615_INT_TO_DOUBLE(sqrt_fx_s1615_int(fxd)));
 #endif
         double e = 3.0;
         fx_s1615 fxe = FX_S1615_DOUBLE_TO_INT(e);
-        #ifndef TEST
+#ifndef TEST
         printf("%f %f\n", FX_S1615_INT_TO_DOUBLE(fxe), FX_S1615_INT_TO_DOUBLE(power_fx_s1615_int(fxe, 4)));
 #endif
         double f = 30.0;
         fx_s1615 fxf = FX_S1615_DOUBLE_TO_INT(f);
-        #ifndef TEST
+#ifndef TEST
         printf("%f %f\n", FX_S1615_INT_TO_DOUBLE(fxf), FX_S1615_INT_TO_DOUBLE(sine_fx_s1615_int(fxf)));    
-        #endif
+#endif
     }
 
     clock_t end = clock();
