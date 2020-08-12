@@ -1,0 +1,183 @@
+	.file	"test.c"
+	.text
+	.def	__main;	.scl	2;	.type	32;	.endef
+	.section .rdata,"dr"
+.LC2:
+	.ascii "%f %d %f %d\12\0"
+.LC4:
+	.ascii "%d %f\12\0"
+.LC7:
+	.ascii "%f %f\12\0"
+.LC10:
+	.ascii "Dummy sum: %lld\12\0"
+.LC12:
+	.ascii "Total run time: %lf\12\0"
+	.section	.text.startup,"x"
+	.p2align 4,,15
+	.globl	main
+	.def	main;	.scl	2;	.type	32;	.endef
+	.seh_proc	main
+main:
+	pushq	%r12
+	.seh_pushreg	%r12
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	pushq	%rdi
+	.seh_pushreg	%rdi
+	pushq	%rsi
+	.seh_pushreg	%rsi
+	pushq	%rbx
+	.seh_pushreg	%rbx
+	subq	$176, %rsp
+	.seh_stackalloc	176
+	movaps	%xmm6, 64(%rsp)
+	.seh_savexmm	%xmm6, 64
+	movaps	%xmm7, 80(%rsp)
+	.seh_savexmm	%xmm7, 80
+	movaps	%xmm8, 96(%rsp)
+	.seh_savexmm	%xmm8, 96
+	movaps	%xmm9, 112(%rsp)
+	.seh_savexmm	%xmm9, 112
+	movaps	%xmm10, 128(%rsp)
+	.seh_savexmm	%xmm10, 128
+	movaps	%xmm11, 144(%rsp)
+	.seh_savexmm	%xmm11, 144
+	movaps	%xmm12, 160(%rsp)
+	.seh_savexmm	%xmm12, 160
+	.seh_endprologue
+	leaq	.LC2(%rip), %rbp
+	movl	$2147483647, %esi
+	leaq	.LC4(%rip), %rdi
+	leaq	.LC7(%rip), %rbx
+	call	__main
+	call	clock
+	movsd	.LC0(%rip), %xmm6
+	movq	$0, 56(%rsp)
+	movsd	.LC1(%rip), %xmm11
+	movl	%eax, %r12d
+	movsd	.LC3(%rip), %xmm10
+	movsd	.LC5(%rip), %xmm7
+	movsd	.LC6(%rip), %xmm9
+	movsd	.LC8(%rip), %xmm12
+	movsd	.LC9(%rip), %xmm8
+	.p2align 4,,10
+.L2:
+	movapd	%xmm6, %xmm3
+	movq	%xmm6, %r9
+	movapd	%xmm11, %xmm1
+	movl	$983040, 32(%rsp)
+	movl	$655360, %r8d
+	movq	%xmm11, %rdx
+	movq	%rbp, %rcx
+	call	printf
+	movapd	%xmm10, %xmm2
+	movq	%xmm10, %r8
+	movq	%rdi, %rcx
+	movl	$21845, %edx
+	call	printf
+	movl	$1638400, %ecx
+	call	sqrt_fx_s1615_int
+	pxor	%xmm0, %xmm0
+	movq	%xmm9, %rdx
+	movapd	%xmm9, %xmm1
+	cvtsi2sd	%eax, %xmm0
+	movq	%rbx, %rcx
+	mulsd	%xmm7, %xmm0
+	movapd	%xmm0, %xmm2
+	movq	%xmm0, %r8
+	call	printf
+	movapd	%xmm12, %xmm1
+	movl	$98304, %ecx
+	call	power_fx_s1615_int
+	pxor	%xmm0, %xmm0
+	movapd	%xmm8, %xmm1
+	movq	%xmm8, %rdx
+	cvtsi2sd	%eax, %xmm0
+	movq	%rbx, %rcx
+	mulsd	%xmm7, %xmm0
+	movapd	%xmm0, %xmm2
+	movq	%xmm0, %r8
+	call	printf
+	movl	$983040, %ecx
+	call	sine_fx_s1615_int
+	pxor	%xmm0, %xmm0
+	movapd	%xmm6, %xmm1
+	movq	%xmm6, %rdx
+	cvtsi2sd	%eax, %xmm0
+	movq	%rbx, %rcx
+	mulsd	%xmm7, %xmm0
+	movapd	%xmm0, %xmm2
+	movq	%xmm0, %r8
+	call	printf
+	subl	$1, %esi
+	movq	$4379989, 56(%rsp)
+	jne	.L2
+	call	clock
+	movq	56(%rsp), %rdx
+	leaq	.LC10(%rip), %rcx
+	movl	%eax, %ebx
+	subl	%r12d, %ebx
+	call	printf
+	leaq	.LC12(%rip), %rcx
+	pxor	%xmm0, %xmm0
+	cvtsi2sd	%ebx, %xmm0
+	divsd	.LC11(%rip), %xmm0
+	movapd	%xmm0, %xmm1
+	movq	%xmm0, %rdx
+	call	printf
+	nop
+	movaps	64(%rsp), %xmm6
+	xorl	%eax, %eax
+	movaps	80(%rsp), %xmm7
+	movaps	96(%rsp), %xmm8
+	movaps	112(%rsp), %xmm9
+	movaps	128(%rsp), %xmm10
+	movaps	144(%rsp), %xmm11
+	movaps	160(%rsp), %xmm12
+	addq	$176, %rsp
+	popq	%rbx
+	popq	%rsi
+	popq	%rdi
+	popq	%rbp
+	popq	%r12
+	ret
+	.seh_endproc
+	.section .rdata,"dr"
+	.align 8
+.LC0:
+	.long	0
+	.long	1077805056
+	.align 8
+.LC1:
+	.long	0
+	.long	1077149696
+	.align 8
+.LC3:
+	.long	0
+	.long	1071994176
+	.align 8
+.LC5:
+	.long	0
+	.long	1056964608
+	.align 8
+.LC6:
+	.long	0
+	.long	1078525952
+	.align 8
+.LC8:
+	.long	0
+	.long	1074790400
+	.align 8
+.LC9:
+	.long	0
+	.long	1074266112
+	.align 8
+.LC11:
+	.long	0
+	.long	1083129856
+	.ident	"GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0"
+	.def	clock;	.scl	2;	.type	32;	.endef
+	.def	printf;	.scl	2;	.type	32;	.endef
+	.def	sqrt_fx_s1615_int;	.scl	2;	.type	32;	.endef
+	.def	power_fx_s1615_int;	.scl	2;	.type	32;	.endef
+	.def	sine_fx_s1615_int;	.scl	2;	.type	32;	.endef

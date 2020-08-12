@@ -6,7 +6,7 @@
 int main() {
 
     clock_t start = clock();
-    long long sum = 0;
+    volatile long long sum = 0;
     for(int i = 0 ; i < INT_MAX ; i++) {
         
         double a = 20.0, b = 30.0;
