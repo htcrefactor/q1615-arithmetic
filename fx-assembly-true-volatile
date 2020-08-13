@@ -1,0 +1,81 @@
+	.file	"fx_s1615_double.c"
+	.text
+	.p2align 4,,15
+	.globl	sine_fx_s1615_int
+	.def	sine_fx_s1615_int;	.scl	2;	.type	32;	.endef
+	.seh_proc	sine_fx_s1615_int
+sine_fx_s1615_int:
+	subq	$40, %rsp
+	.seh_stackalloc	40
+	.seh_endprologue
+	pxor	%xmm0, %xmm0
+	cvtsi2sd	%ecx, %xmm0
+	mulsd	.LC0(%rip), %xmm0
+	mulsd	.LC1(%rip), %xmm0
+	call	sin
+	mulsd	.LC2(%rip), %xmm0
+	cvttsd2si	%xmm0, %eax
+	addq	$40, %rsp
+	ret
+	.seh_endproc
+	.p2align 4,,15
+	.globl	sqrt_fx_s1615_int
+	.def	sqrt_fx_s1615_int;	.scl	2;	.type	32;	.endef
+	.seh_proc	sqrt_fx_s1615_int
+sqrt_fx_s1615_int:
+	subq	$56, %rsp
+	.seh_stackalloc	56
+	movaps	%xmm6, 32(%rsp)
+	.seh_savexmm	%xmm6, 32
+	.seh_endprologue
+	pxor	%xmm0, %xmm0
+	pxor	%xmm1, %xmm1
+	cvtsi2sd	%ecx, %xmm0
+	mulsd	.LC0(%rip), %xmm0
+	ucomisd	%xmm0, %xmm1
+	sqrtsd	%xmm0, %xmm6
+	ja	.L5
+.L4:
+	mulsd	.LC2(%rip), %xmm6
+	cvttsd2si	%xmm6, %eax
+	movaps	32(%rsp), %xmm6
+	addq	$56, %rsp
+	ret
+.L5:
+	call	sqrt
+	jmp	.L4
+	.seh_endproc
+	.p2align 4,,15
+	.globl	power_fx_s1615_int
+	.def	power_fx_s1615_int;	.scl	2;	.type	32;	.endef
+	.seh_proc	power_fx_s1615_int
+power_fx_s1615_int:
+	subq	$40, %rsp
+	.seh_stackalloc	40
+	.seh_endprologue
+	pxor	%xmm0, %xmm0
+	cvtsi2sd	%ecx, %xmm0
+	mulsd	.LC0(%rip), %xmm0
+	call	pow
+	mulsd	.LC2(%rip), %xmm0
+	cvttsd2si	%xmm0, %eax
+	addq	$40, %rsp
+	ret
+	.seh_endproc
+	.section .rdata,"dr"
+	.align 8
+.LC0:
+	.long	0
+	.long	1056964608
+	.align 8
+.LC1:
+	.long	-1571643772
+	.long	1066524486
+	.align 8
+.LC2:
+	.long	0
+	.long	1088421888
+	.ident	"GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 8.1.0"
+	.def	sin;	.scl	2;	.type	32;	.endef
+	.def	sqrt;	.scl	2;	.type	32;	.endef
+	.def	pow;	.scl	2;	.type	32;	.endef
