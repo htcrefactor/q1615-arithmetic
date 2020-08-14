@@ -4,8 +4,8 @@
 typedef int fx_s1615;
 
 #define P2_15 32768.0   // 2^15
-#define FX_S1615_INT_TO_DOUBLE(a) ((a) / P2_15)
-#define FX_S1615_DOUBLE_TO_INT(a) (int)((a) * P2_15)
+#define FX_S1615_INT_TO_DOUBLE(a) ((a) / P2_15)         // right shift
+#define FX_S1615_DOUBLE_TO_INT(a) (int)((a) * P2_15)    // left shift
 
 #define FX_S1615_ADD(a, b) ((a) + (b))
 #define FX_S1615_SUB(a, b) ((a) - (b))
