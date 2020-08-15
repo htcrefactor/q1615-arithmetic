@@ -1,10 +1,26 @@
 #include <stdio.h>
-#include "fx_s1615_double.h"
+//#include "fx_s1615_double.h"
+#include "fx_1615_longlong.h"
 #include <time.h>
 #include <limits.h>
 
 int main() {
+        // 20.08.16 sine 함수 테스트
+        fx_s1615 fa1 = 0x002D0000;
+        fx_s1615 fa2 = 0x00590000;
+        fx_s1615 fa3 = 0x00B40000;
 
+        int j  = 0;
+        for (int i = 0x002D0000; i > 0; i = i - 0x4000) {
+                fa1 = fa1 - 0x4000;
+                printf("%6d", sine_fx_s1615(fa1));
+
+                j++;
+                if (j % 10 == 0) {
+                        puts("");
+                }
+        }
+/*
     clock_t start = clock();
     volatile long long sum = 0;
     for(int i = 0 ; i < INT_MAX ; i++) {
@@ -40,6 +56,6 @@ int main() {
     printf("Dummy sum: %lld\n", sum);
 
     printf("Total run time: %lf\n", (double)(end - start) / CLOCKS_PER_SEC);
-    
+*/
     return 0;
 }

@@ -1,6 +1,6 @@
-#include "fx_s1615_longlong.h"
+#include "fx_s1615_double.h"
 
-const fixed64 fx32_SinTable[92] = {
+const fx_s1615 fx_1516_SinTable[92] = {
     0, 571, 1143, 1714, 2285, 2855, 3425, 3993, 4560, 5126, 
     5690, 6252, 6812, 7371, 7927, 8480, 9032, 9580, 10125, 
     10668, 11207, 11743, 12275, 12803, 13327, 13848, 14364, 
@@ -13,3 +13,35 @@ const fixed64 fx32_SinTable[92] = {
     31651, 31794, 31928, 32051, 32165, 32270, 32364, 32449, 
     32523, 32588, 32643, 32688, 32723, 32748, 32763, 32768
 };
+
+#define FX32_90    0x002D0000
+#define FX32_180   0x00590000
+#define FX32_360   0x00B40000
+
+fx_s1615 sine_fx_s1615(fx_s1615 angle)
+{
+    int sign = 1;
+    fx_s1615 ret0, diff;
+    int idx;
+
+    if (angle < 0)
+    {
+        sign = -1;
+        angle *= -1; 
+    }
+
+    angle = angle % FX32_360; 
+    if (angle >= FX32_180)
+    {
+        sign *= -1;
+        angle -= FX32_180;
+    }
+
+    if (angle > FX32_90)
+        angle = FX32_180 - angle;
+    idx = angle >> 15;
+
+    ret0 = fx_1516_SinTable[idx]; 
+    diff = fx_1516_SinTable[idx + 1] - ret0;
+    return ( sign * ( ret0 + ((diff * (angle & 0x7FFF)) >> 15) ));
+}

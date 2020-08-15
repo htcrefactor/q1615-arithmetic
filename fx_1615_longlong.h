@@ -13,4 +13,6 @@ typedef long long fixed64;
 // MUL3는 캐스팅 없이도 연산이 빠르게 할 수 있도록.. 곱하는 값들의 크기가 -1 ~ 1 사이 작은 값 -> 손실 걱정 없이..?
 // -1 
 
+fx_s1615 sine_fx_s1615(fx_s1615 angle);
+
 #endif
