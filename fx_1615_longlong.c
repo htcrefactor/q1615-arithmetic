@@ -1,4 +1,4 @@
-#include "fx_s1615_double.h"
+#include "fx_s1615_longlong.h"
 
 const fixed64 fx32_SinTable[92] = {
     0, 571, 1143, 1714, 2285, 2855, 3425, 3993, 4560, 5126, 
