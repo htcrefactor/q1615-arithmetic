@@ -1,11 +1,12 @@
 #include <stdio.h>
-//#include "fx_s1615_double.h"
+#include "fx_s1615_double.h"
 #include "fx_1615_longlong.h"
 #include <time.h>
 #include <limits.h>
 
 int main() {
         // 20.08.16 sine 함수 테스트
+    /*
         fx_s1615 fa1 = 0x002D0000;
         fx_s1615 fa2 = 0x00590000;
         fx_s1615 fa3 = 0x00B40000;
@@ -20,6 +21,42 @@ int main() {
                         puts("");
                 }
         }
+    */
+    double da;
+    double db;
+    scanf("%lf %lf",&da, &db);
+    
+    fx_s1615 fa,fb,fc;
+    fa =FX_S1615_DOUBLE_TO_INT(da);
+    fb =FX_S1615_DOUBLE_TO_INT(db);
+    
+    printf("Test  multiplication\n");
+    
+    fc =FX_1615_LONGLONG_MUL1(fa,fb);
+    printf("Exact answer = %f func result = %f, error = %f\n",da*db, FX_S1615_INT_TO_DOUBLE(fc),
+           da*db - FX_S1615_INT_TO_DOUBLE(fc));
+    
+    fc =FX_1615_LONGLONG_MUL2(fa,fb);
+    printf("Exact answer = %f func result = %f, error = %f\n",da*db, FX_S1615_INT_TO_DOUBLE(fc),
+              da*db - FX_S1615_INT_TO_DOUBLE(fc));
+    
+    fc =FX_1615_LONGLONG_MUL3(fa,fb);
+    printf("Exact answer = %f func result = %f, error = %f\n",da*db, FX_S1615_INT_TO_DOUBLE(fc),
+              da*db - FX_S1615_INT_TO_DOUBLE(fc));
+    
+    printf("\nTest division\n");
+    fc =FX_1615_LONGLONG_DIV1(fa,fb);
+    printf("Exact answer = %f func result = %f, error = %f\n",da/db, FX_S1615_INT_TO_DOUBLE(fc),
+           da/db - FX_S1615_INT_TO_DOUBLE(fc));
+    
+    fc =FX_1615_LONGLONG_DIV2(fa,fb);
+    printf("Exact answer = %f func result = %f, error = %f\n",da/db, FX_S1615_INT_TO_DOUBLE(fc),
+    da/db - FX_S1615_INT_TO_DOUBLE(fc));
+    
+    fc =FX_1615_LONGLONG_DIV3(fa,fb);
+    printf("Exact answer = %f func result = %f, error = %f\n",da/db, FX_S1615_INT_TO_DOUBLE(fc),
+    da/db - FX_S1615_INT_TO_DOUBLE(fc));
+    
 /*
     clock_t start = clock();
     volatile long long sum = 0;
