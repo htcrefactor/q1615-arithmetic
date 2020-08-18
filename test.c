@@ -4,7 +4,91 @@
 #include <time.h>
 #include <limits.h>
 
+void fx_1615_longlong_mul1_test(void) {
+    fx_s1615 divisor = 62764;
+    for (int i = 0; i < 100000000; ++i) {
+        FX_1615_LONGLONG_MUL1(i, divisor);
+    }
+}
+
+void fx_1615_longlong_mul2_test(void) {
+    fx_s1615 divisor = 62764;
+    for (int i = 0; i < 100000000; ++i) {
+        FX_1615_LONGLONG_MUL2(i, divisor);
+    }
+}
+
+void fx_1615_longlong_mul3_test(void) {
+    fx_s1615 divisor = 62764;
+    for (int i = 0; i < 100000000; ++i) {
+        FX_1615_LONGLONG_MUL3(i, divisor);
+    }
+}
+
+void fx_1615_longlong_div1_test(void) {
+    fx_s1615 divisor = 3194858;
+    for (int i = 0; i < 100000000; ++i) {
+        FX_1615_LONGLONG_DIV1(i, divisor);
+    }
+}
+
+void fx_1615_longlong_div2_test(void) {
+    fx_s1615 divisor = 3194858;
+    for (int i = 0; i < 100000000; ++i) {
+        FX_1615_LONGLONG_DIV2(i, divisor);
+    }
+}
+
+void fx_1615_longlong_div2_test1(void) {
+    fx_s1615 divisor = 3194858;
+    for (int i = 0; i < 100000000; ++i) {
+        FX_1615_LONGLONG_DIV21(i, divisor);
+    }
+}void fx_1615_longlong_div2_test2(void) {
+    fx_s1615 divisor = 3194858;
+    for (int i = 0; i < 100000000; ++i) {
+        FX_1615_LONGLONG_DIV22(i, divisor);
+    }
+}void fx_1615_longlong_div2_test3(void) {
+    fx_s1615 divisor = 3194858;
+    for (int i = 0; i < 100000000; ++i) {
+        FX_1615_LONGLONG_DIV23(i, divisor);
+    }
+}
+
+
+void fx_1615_longlong_div3_test(void) {
+    fx_s1615 divisor = 3194858;
+    for (int i = 0; i < 100000000; ++i) {
+        FX_1615_LONGLONG_DIV3(i, divisor);
+    }
+}
+
 int main() {
+    
+    fx_1615_longlong_mul1_test();
+    fx_1615_longlong_mul2_test();
+    fx_1615_longlong_mul3_test();
+
+    fx_1615_longlong_div1_test();
+    fx_1615_longlong_div2_test();
+    fx_1615_longlong_div2_test1();
+    fx_1615_longlong_div2_test2();
+    fx_1615_longlong_div2_test3();
+    fx_1615_longlong_div3_test();
+
+/*
+    for (int i = 0; i < 10; ++i) {
+        fx_s1615 k = 0x50000;
+        fx_s1615 in;
+        scanf("%x", &in);
+
+        printf("DIV1: %x\n", (fx_s1615)FX_1615_LONGLONG_DIV1(k, in));
+        printf("DIV2: %x\n", (fx_s1615)FX_1615_LONGLONG_DIV2(k, in));
+        printf("DIV3: %x\n", (fx_s1615)FX_1615_LONGLONG_DIV3(k, in));
+    }
+*/
+
         // 20.08.16 sine 함수 테스트
     /*
         fx_s1615 fa1 = 0x002D0000;
@@ -22,6 +106,7 @@ int main() {
                 }
         }
     */
+    /* 오차가 발생하는 주기 찾기
     double da;
     double db;
     scanf("%lf %lf",&da, &db);
@@ -56,7 +141,10 @@ int main() {
     fc =FX_1615_LONGLONG_DIV3(fa,fb);
     printf("Exact answer = %f func result = %f, error = %f\n",da/db, FX_S1615_INT_TO_DOUBLE(fc),
     da/db - FX_S1615_INT_TO_DOUBLE(fc));
+    */
+
     
+
 /*
     clock_t start = clock();
     volatile long long sum = 0;
