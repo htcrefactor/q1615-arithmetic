@@ -6,7 +6,7 @@ typedef long long fixed64;
 
 // 32 bit 컴퓨터에서는 성능이 낮아짐. 그러나 overflow 확률이 적고 정밀도도 가장 높음.
 // 64 bit 컴퓨터라면 당연히 MUL1을 사용해야 함! 
-#define FX_1615_LONGLONG_MUL1(a, b) (fx_s1615)((fixed64)(a) * (b)) >> 15)
+#define FX_1615_LONGLONG_MUL1(a, b) (fx_s1615) (((fixed64)(a) * (b)) >> 15)
 // overflow 확률 높음
 // 32 bit 컴퓨터인데 성능이 중요하다면  MUL2나 MUL3 사용
 #define FX_1615_LONGLONG_MUL2(a, b) ((a) * (b)) >> 15
