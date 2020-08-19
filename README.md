@@ -238,15 +238,15 @@ gprof
 
     fx_s1615로 표현된 값인 a를 8만큼 right shifting 해주고, b를 7만큼 right shifiting 해준 후, 두 값을 곱해주는 macro  
     
-* `#define FX_1615_LONGLONG_DIV1(a, b) (fx_s1615)((fixed64)((a >> 15) / (b >> 15)) << 15)`
+* `#define FX_1615_LONGLONG_DIV01(a, b) (fx_s1615)((fixed64)((a >> 15) / (b >> 15)) << 15)`
 
     fx_s1615로 표현된 값을 long long으로 cast 해주고, a와 b를 각각 15만큼 right shfiting 하고 a 와 b를 나눠준 후, 15만큼 left shifting 해주는  macro  
     
-* `#define FX_1615_LONGLONG_DIV2(a, b) (fx_s1615)(((fixed64)((a) << 15) / b))`
+* `#define FX_1615_LONGLONG_DIV02(a, b) (fx_s1615)(((fixed64)(a) << 15) / (b))`
 
     fx_s1615로 표현된 값을 long long으로 cast 해주고, a를 15만큼 left shfiting 하고 b와 나눠주는  macro  
     
-* `#define FX_1615_LONGLONG_DIV3(a, b) (((a << 5) / (b >> 6)) << 4)`
+* `#define FX_1615_LONGLONG_DIV03(a, b) (((a << 5) / (b >> 6)) << 4)`
 
     fx_s1615로 표현된 값인 a를 5만큼 left shifting 해주고, b를 6만큼 right shfiting 하고 나눠준 후, 4만큼 left shifting 해주는  macro  
     
