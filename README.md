@@ -261,17 +261,75 @@ gprof
 
 
 
-### 정확도 검증
-엑셀 표 넣는거
+### 정확도 테스트
+* Multiply
+1. MUL_01
+![image](MUL_01.png)
+
+2. MUL_02
+![image](MUL_01.png)
 
 
-### 속도 검증
-* 32bit 인 경우
+3. MUL_03
+![image](MUL_01.png)
+* Division
+1. DIV_01
+![image](DIV_01.png)
+
+2. DIV_02
+![image](DIV_02.png)
+
+3. DIV_03
+![image](DIV_03.png)
+
+정확도 테스트를 위해 엑셀표로 확인한 결과,
+DIV_01의 정확도는 ~하고
+DIV_02의 정확도는 ~하고 
+DIV_03의 정확도는 ~하다는 결과가 나왔다.
+
+따라서 최종적으로 정확도는 DIV_XX < DIV_YY < DIV_ZZ로 정확도가 높다는 결과가 나왔다.
+
+<br>
+<br>
+
+### 속도 테스트
+![image](speed-experiment.png)
+* 32bit 실행 결과
+
+1. Multiply
+
+    MUL_03 < MUL_02 < MUL_01
+
+<br>
+
+32 bit에서 곱셈을 실행한 결과, cast하지 않은 것들에서 빠른 성능을 보인다는 것을 알 수 있었다.
+
+<br>
+<br>
+
+2. Division    
+
+    DIV_01 = DIV_03 < DIV_02
 
 
-* 64bit 인 경우
+<br>
+<br>
+
+* 64bit 실행 결과
+1. Multiply     
+
+    MUL_03 = MUL_02 < MUL_01
 
 
+<br>
+<br>
+
+2. Division      
+
+    DIV_02 < DIV_03 < DIV_01
+
+<br>
+<br>
 
 
 ### Sin
