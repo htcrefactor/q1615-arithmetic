@@ -12,7 +12,7 @@ typedef long long fixed64;
 #define FX_1615_LONGLONG_MUL2(a, b) ((a) * (b)) >> 15
 #define FX_1615_LONGLONG_MUL3(a, b) ((a >> 8) * (b >> 7))
 
-#define FX_1615_LONGLONG_DIV0(a,b) (fx_s1615)((fixed64)((a >> 15) / (b >> 15)))
+#define FX_1615_LONGLONG_DIV0(a,b) (fx_s1615)((fixed64)((a >> 15) / (b >> 15)) << 15)
 #define FX_1615_LONGLONG_DIV1(a,b) (fx_s1615)(((fixed64)(a) << 15) / b)
 #define FX_1615_LONGLONG_DIV2(a,b) (((a << 8) / (b >> 4)) << 3)    // DIV2 속도 테스트 1위
 #define FX_1615_LONGLONG_DIV3(a,b) ((a << 8) / (b >> 7))
