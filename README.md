@@ -267,11 +267,20 @@ gprof
 ![image](MUL_01.png)
 
 2. MUL_02
-![image](MUL_01.png)
-
+![image](MUL_02.png)
 
 3. MUL_03
-![image](MUL_01.png)
+![image](MUL_03.png)
+
+정확도 테스트를 위해 엑셀표로 확인한 결과,
+MUL_01의 정확도는 ~하고
+MUL_02의 정확도는 ~하고 
+MUL_03의 정확도는 ~하다는 결과가 나왔다.
+
+따라서 최종적으로 정확도는 MUL_XX < MUL_YY < MUL_ZZ로 정확도가 높다는 결과가 나왔다.
+
+<br>
+
 * Division
 1. DIV_01
 ![image](DIV_01.png)
