@@ -1,5 +1,5 @@
-#ifndef __S1615_DOUBLE_H_
-#define __S1615_DOUBLE_H_
+#ifndef S1615_DOUBLE_H_
+#define S1615_DOUBLE_H_
 
 typedef int fx_s1615;
 
