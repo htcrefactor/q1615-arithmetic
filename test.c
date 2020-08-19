@@ -55,69 +55,69 @@ static void fx_1615_longlong_div03_test(void) {
 	}
 }
 
-static void fx_1615_longlong_div04_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV04((i),(divisor));
-	}
-}
+// static void fx_1615_longlong_div04_test(void) {
+// 	fx_s1615 divisor = 3194858;
+// 	fx_s1615 a = 0;
+// 	for (int i = 0; i < 100000000; ++i) {
+// 		a=FX_1615_LONGLONG_DIV04((i),(divisor));
+// 	}
+// }
 
-static void fx_1615_longlong_div05_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV05((i),(divisor));
-	}
-}
+// static void fx_1615_longlong_div05_test(void) {
+// 	fx_s1615 divisor = 3194858;
+// 	fx_s1615 a = 0;
+// 	for (int i = 0; i < 100000000; ++i) {
+// 		a=FX_1615_LONGLONG_DIV05((i),(divisor));
+// 	}
+// }
 
-static void fx_1615_longlong_div06_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV06((i),(divisor));
-	}
-}
+// static void fx_1615_longlong_div06_test(void) {
+// 	fx_s1615 divisor = 3194858;
+// 	fx_s1615 a = 0;
+// 	for (int i = 0; i < 100000000; ++i) {
+// 		a=FX_1615_LONGLONG_DIV06((i),(divisor));
+// 	}
+// }
 
-static void fx_1615_longlong_div07_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV07((i),(divisor));
-	}
-}
+// static void fx_1615_longlong_div07_test(void) {
+// 	fx_s1615 divisor = 3194858;
+// 	fx_s1615 a = 0;
+// 	for (int i = 0; i < 100000000; ++i) {
+// 		a=FX_1615_LONGLONG_DIV07((i),(divisor));
+// 	}
+// }
 
-static void fx_1615_longlong_div08_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV08((i),(divisor));
-	}
-}
+// static void fx_1615_longlong_div08_test(void) {
+// 	fx_s1615 divisor = 3194858;
+// 	fx_s1615 a = 0;
+// 	for (int i = 0; i < 100000000; ++i) {
+// 		a=FX_1615_LONGLONG_DIV08((i),(divisor));
+// 	}
+// }
 
-static void fx_1615_longlong_div09_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV09((i),(divisor));
-	}
-}
+// static void fx_1615_longlong_div09_test(void) {
+// 	fx_s1615 divisor = 3194858;
+// 	fx_s1615 a = 0;
+// 	for (int i = 0; i < 100000000; ++i) {
+// 		a=FX_1615_LONGLONG_DIV09((i),(divisor));
+// 	}
+// }
 
-static void fx_1615_longlong_div10_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV10((i),(divisor));
-	}
-}
+// static void fx_1615_longlong_div10_test(void) {
+// 	fx_s1615 divisor = 3194858;
+// 	fx_s1615 a = 0;
+// 	for (int i = 0; i < 100000000; ++i) {
+// 		a=FX_1615_LONGLONG_DIV10((i),(divisor));
+// 	}
+// }
 
-static void fx_1615_longlong_div11_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV11((i),(divisor));
-	}
-}
+// static void fx_1615_longlong_div11_test(void) {
+// 	fx_s1615 divisor = 3194858;
+// 	fx_s1615 a = 0;
+// 	for (int i = 0; i < 100000000; ++i) {
+// 		a=FX_1615_LONGLONG_DIV11((i),(divisor));
+// 	}
+// }
 
 int main(void) {
 	const fx_s1615 fx_1615_SinTable[91] = { 0, 571, 1143, 1714, 2285, 2855,
@@ -141,14 +141,14 @@ int main(void) {
 	fx_1615_longlong_div01_test();
 	fx_1615_longlong_div02_test();
 	fx_1615_longlong_div03_test();
-	fx_1615_longlong_div04_test();
-	fx_1615_longlong_div05_test();
-	fx_1615_longlong_div06_test();
-	fx_1615_longlong_div07_test();
-	fx_1615_longlong_div08_test();
-	fx_1615_longlong_div09_test();
-	fx_1615_longlong_div10_test();
-	fx_1615_longlong_div11_test();
+	// fx_1615_longlong_div04_test();
+	// fx_1615_longlong_div05_test();
+	// fx_1615_longlong_div06_test();
+	// fx_1615_longlong_div07_test();
+	// fx_1615_longlong_div08_test();
+	// fx_1615_longlong_div09_test();
+	// fx_1615_longlong_div10_test();
+	// fx_1615_longlong_div11_test();
 
 
 	/*
