@@ -67,7 +67,9 @@ s1615를 10진수로 표현하는 방법은 간단하다.
 
 ## Fixed Point Arithmetic Library
 
-### Macros
+
+### Project1
+#### Macros
 * `P2_15 32768.0`
 
     15자리를 shifting하기 위해 필요한 2<sup>15</sup>를 정의
@@ -100,7 +102,7 @@ s1615를 10진수로 표현하는 방법은 간단하다.
     fx_s1615로 표현된 두 값을 나눠주는 macro  
 <br>
 
-### Functions
+#### Functions
 * `fx_s1615 sine_fx_s1615_int(fx_s1615 a)`
 
     fx_s1615로 표현된 값의 sin 을 구해주는 함수
@@ -114,7 +116,7 @@ s1615를 10진수로 표현하는 방법은 간단하다.
     fx_s1615로 표현된 값의 n승을 구해주는 함수
 
 
-## Makefile
+### Makefile
 
 1. define : 코드의 재사용성을 증가시키기 위해 반복되는 내용을 정의한다.
 ```
@@ -173,8 +175,8 @@ dep :
 	gccmakedep ${SRCS}  # dependency check
 ```
 
-## gcc -O flag
-### -O 옵션별 세부 사항
+### gcc -O flag
+#### -O 옵션별 세부 사항
 `[-Olevel]`
 - O0 : 최적화를 수행하지 않음 (Default)
 - O, -O1 : 코드 크기와 실행 시간을 줄이는 최적화만 수행
@@ -182,15 +184,15 @@ dep :
 - O3 : -O2 최적화에 인라인 함수와 레지스터에 대한 최적화를 추가로 수행
 - Os : -O2 최적화 기능을 사용하지만, 코드 크기를 증가하는 최적화는 제외
 
-### 최적화 성능 비교
+#### 최적화 성능 비교
 for문을 통하여 2,147,483,648(INT_MAX)번의 연산을 반복하는 코드를 작성하고 -O0과 -O2 옵션을 주어 컴파일 한 뒤 실행시간을 측정하였다.
 
-#### 결과
+##### 결과
 ![O2-optimization-result](optimization-result.png)
 
 최적화를 하지 않았을 때 for문을 수행하는데 약 5분의 시간이 걸렸으나 -O2 옵션으로 최적화하였을 때 for문을 수행했는가 싶을 정도로 실행시간이 줄어들었음을 확인할 수 있었다.
 
-#### 원인 분석
+##### 원인 분석
 실제로 코드가 어떻게 최적화 되었는지 확인하기 위해 gcc -S 옵션을 통해 컴파일된 어셈블리 코드를 분석해 보았다.
 ```
 pi@raspberrypi:~/battle_c_1 $ gcc -S -DTEST -lm test.c
@@ -206,12 +208,113 @@ test.s는 main 라벨에서 처음 clock 함수를 호출한다. 이후 L2 라�
 실제로 for문 내부에서 실행되는 코드들은 그 안에서만 연산될 뿐 for문 밖의 코드에 영향을 주지 못한다. 외부 변수에 연산의 결과를 저장하거나 출력하는 코드가 없기 때문이다.   
 -O2 옵션을 주어 컴파일 하였을 때 컴파일러가 이를 확인하고 어셈블리 코드에 포함시키지 않아 극단적인 성능 차이를 보여준 것으로 보인다.
 
-#### gprof 사용법
+##### gprof 사용법
 ```
 gcc -pg main.c
 ./a.out #gmon.out is made after running a.out
 gprof
 ```
+
+
+### Project2
+#### Macros
+* `typedef long long fixed64`
+
+    fx_s1615로 표현된 숫자를 long long으로 형변환하는 macro
+    
+<br>
+<br>
+
+
+* `#define FX_1615_LONGLONG_MUL1(a, b) (fx_s1615) (((fixed64)(a) * (b)) >> 15)`
+
+    fx_s1615로 표현된 값을 long long으로 cast 해준 수를 곱한 후, 15만큼 right shifting 해주는 macro
+
+* `#define FX_1615_LONGLONG_MUL2(a, b) ((a) * (b)) >> 15`
+
+    fx_s1615로 표현된 값을 곱해주고 15만큼 right shifting해주는 macro
+    
+* `#define FX_1615_LONGLONG_MUL3(a, b) ((a >> 8) * (b >> 7))`
+
+    fx_s1615로 표현된 값인 a를 8만큼 right shifting 해주고, b를 7만큼 right shifiting 해준 후, 두 값을 곱해주는 macro  
+    
+* `#define FX_1615_LONGLONG_DIV1(a, b) (fx_s1615)((fixed64)((a >> 15) / (b >> 15)) << 15)`
+
+    fx_s1615로 표현된 값을 long long으로 cast 해주고, a와 b를 각각 15만큼 right shfiting 하고 a 와 b를 나눠준 후, 15만큼 left shifting 해주는  macro  
+    
+* `#define FX_1615_LONGLONG_DIV2(a, b) (fx_s1615)(((fixed64)((a) << 15) / b))`
+
+    fx_s1615로 표현된 값을 long long으로 cast 해주고, a를 15만큼 left shfiting 하고 b와 나눠주는  macro  
+    
+* `#define FX_1615_LONGLONG_DIV3(a, b) (((a << 5) / (b >> 6)) << 4)`
+
+    fx_s1615로 표현된 값인 a를 5만큼 left shifting 해주고, b를 6만큼 right shfiting 하고 나눠준 후, 4만큼 left shifting 해주는  macro  
+    
+<br>
+
+#### Functions
+* `fx_s1615 sine_fx_s1615_longlong(fx_s1615 angle)`
+
+    fx_s1615로 표현된 각의 sin 을 구해주는 함수
+
+
+
+
+
+### 정확도 검증
+엑셀 표 넣는거
+
+
+### 속도 검증
+* 32bit 인 경우
+
+
+* 64bit 인 경우
+
+
+
+
+### Sin
+
+#### sin table
+angle 이 0도부터 90도까지인 경우, sin 값을 fx_s1516으로 표현한 SinTable이다.
+불필요한 연산을 줄이고자 아래와 같은 SinTable을 사용하게 되었다.
+
+```
+const static fx_s1615 fx_1615_SinTable[91] = { 0, 571, 1143, 1714, 2285, 2855,
+			3425, 3993, 4560, 5126, 5690, 6252, 6812, 7371, 7927, 8480, 9032,
+			9580, 10125, 10668, 11207, 11743, 12275, 12803, 13327, 13848,
+			14364, 14876, 15383, 15886, 16384, 16876, 17364, 17846, 18323,
+			18794, 19260, 19720, 20173, 20621, 21062, 21497, 21926, 22347,
+			22762, 23170, 23571, 23964, 24351, 24730, 25101, 25465, 25821,
+			26169, 26509, 26841, 27165, 27481, 27788, 28087, 28377, 28659,
+			28932, 29196, 29451, 29697, 29935, 30163, 30381, 30591, 30791,
+			30982, 31164, 31336, 31498, 31651, 31794, 31928, 32051, 32165,
+			32270, 32364, 32449, 32523, 32588, 32643, 32688, 32723, 32748,
+			32763, 32768 
+};
+
+
+```
+
+
+#### fx_s1615 sine_fx_s1615_longlong(fx_s1615 angle) function에 대하여...
+이 함수는 파라미터를 각도로 받아오는 경우, 해당하는 sin값을 찾아서 반환해주는 함수이다.
+sin은 360도를 주기로 하는 함수이기 때문에, angle이 360도로 나누었을때의 나머지에 대한 값의 sin 값을 찾아주고자 하였다.
+
+```
+idx = angle >> 15;
+
+ret0 = fx_1516_SinTable[idx]; 
+diff = fx_1516_SinTable[idx + 1] - ret0;
+return ( sign * ( ret0 + ((diff * (angle & 0x7FFF)) >> 15) ));
+```
+
+fx_1516_SinTable은 fx_s1516에 맞춰진 표이므로, fx_s1615에 맞춰 변환하기 위해 위의 코드와 작업을 하였다.
+
+
+<br>
+<br>
 
 ## 0819 과제
 
@@ -227,7 +330,6 @@ double로 input을 받아서 fx_s1615로 변환하여 사칙연산을 수행한�
 make로 실행
 
 
-### 아키텍쳐 설계 명세
 
 
 ### 코딩 규칙 검사(MISRA 2012)
