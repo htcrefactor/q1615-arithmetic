@@ -6,13 +6,6 @@
 static void fx_1615_longlong_mul1_test(void);
 static void fx_1615_longlong_mul2_test(void);
 static void fx_1615_longlong_mul3_test(void);
-static void fx_1615_longlong_div0_test(void);
-static void fx_1615_longlong_div1_test(void);
-// static void fx_1615_longlong_div2_test(void);
-// static void fx_1615_longlong_div2_test1(void);
-// static void fx_1615_longlong_div2_test2(void);
-// static void fx_1615_longlong_div2_test3(void);
-static void fx_1615_longlong_div3_test(void);
 
 static void fx_1615_longlong_mul1_test(void) {
 	fx_s1615 divisor = 62764;
@@ -38,57 +31,91 @@ static void fx_1615_longlong_mul3_test(void) {
 	}
 }
 
-static void fx_1615_longlong_div0_test(void) {
+static void fx_1615_longlong_div01_test(void) {
 	fx_s1615 divisor = 3194858;
 	fx_s1615 a = 0;
 	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV0((i),(divisor));
+		a=FX_1615_LONGLONG_DIV01((i),(divisor));
 	}
 }
 
-static void fx_1615_longlong_div1_test(void) {
+static void fx_1615_longlong_div02_test(void) {
 	fx_s1615 divisor = 3194858;
 	fx_s1615 a = 0;
 	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV1((i),(divisor));
+		a=FX_1615_LONGLONG_DIV02((i),(divisor));
 	}
 }
 
-// static void fx_1615_longlong_div2_test(void) {
-// 	fx_s1615 divisor = 3194858;
-// 	fx_s1615 a = 0;
-// 	for (int i = 0; i < 100000000; ++i) {
-// 		a=FX_1615_LONGLONG_DIV2((i),(divisor));
-// 	}
-// }
-
-// static void fx_1615_longlong_div2_test1(void) {
-// 	fx_s1615 divisor = 3194858;
-// 	fx_s1615 a = 0;
-// 	for (int i = 0; i < 100000000; ++i) {
-// 		a=FX_1615_LONGLONG_DIV21((i),(divisor));
-// 	}
-// }
-// static void fx_1615_longlong_div2_test2(void) {
-// 	fx_s1615 divisor = 3194858;
-// 	fx_s1615 a = 0;
-// 	for (int i = 0; i < 100000000; ++i) {
-// 		a=FX_1615_LONGLONG_DIV22((i),(divisor));
-// 	}
-// }
-// static void fx_1615_longlong_div2_test3(void) {
-// 	fx_s1615 divisor = 3194858;
-// 	fx_s1615 a = 0;
-// 	for (int i = 0; i < 100000000; ++i) {
-// 		a=FX_1615_LONGLONG_DIV23((i),(divisor));
-// 	}
-// }
-
-static void fx_1615_longlong_div3_test(void) {
+static void fx_1615_longlong_div03_test(void) {
 	fx_s1615 divisor = 3194858;
 	fx_s1615 a = 0;
 	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV3((i),(divisor));
+		a=FX_1615_LONGLONG_DIV03((i),(divisor));
+	}
+}
+
+static void fx_1615_longlong_div04_test(void) {
+	fx_s1615 divisor = 3194858;
+	fx_s1615 a = 0;
+	for (int i = 0; i < 100000000; ++i) {
+		a=FX_1615_LONGLONG_DIV04((i),(divisor));
+	}
+}
+
+static void fx_1615_longlong_div05_test(void) {
+	fx_s1615 divisor = 3194858;
+	fx_s1615 a = 0;
+	for (int i = 0; i < 100000000; ++i) {
+		a=FX_1615_LONGLONG_DIV05((i),(divisor));
+	}
+}
+
+static void fx_1615_longlong_div06_test(void) {
+	fx_s1615 divisor = 3194858;
+	fx_s1615 a = 0;
+	for (int i = 0; i < 100000000; ++i) {
+		a=FX_1615_LONGLONG_DIV06((i),(divisor));
+	}
+}
+
+static void fx_1615_longlong_div07_test(void) {
+	fx_s1615 divisor = 3194858;
+	fx_s1615 a = 0;
+	for (int i = 0; i < 100000000; ++i) {
+		a=FX_1615_LONGLONG_DIV07((i),(divisor));
+	}
+}
+
+static void fx_1615_longlong_div08_test(void) {
+	fx_s1615 divisor = 3194858;
+	fx_s1615 a = 0;
+	for (int i = 0; i < 100000000; ++i) {
+		a=FX_1615_LONGLONG_DIV08((i),(divisor));
+	}
+}
+
+static void fx_1615_longlong_div09_test(void) {
+	fx_s1615 divisor = 3194858;
+	fx_s1615 a = 0;
+	for (int i = 0; i < 100000000; ++i) {
+		a=FX_1615_LONGLONG_DIV09((i),(divisor));
+	}
+}
+
+static void fx_1615_longlong_div10_test(void) {
+	fx_s1615 divisor = 3194858;
+	fx_s1615 a = 0;
+	for (int i = 0; i < 100000000; ++i) {
+		a=FX_1615_LONGLONG_DIV10((i),(divisor));
+	}
+}
+
+static void fx_1615_longlong_div11_test(void) {
+	fx_s1615 divisor = 3194858;
+	fx_s1615 a = 0;
+	for (int i = 0; i < 100000000; ++i) {
+		a=FX_1615_LONGLONG_DIV11((i),(divisor));
 	}
 }
 
@@ -110,13 +137,19 @@ int main(void) {
 	fx_1615_longlong_mul2_test();
 	fx_1615_longlong_mul3_test();
 
-	fx_1615_longlong_div0_test();
-	fx_1615_longlong_div1_test();
-	// fx_1615_longlong_div2_test();
-	// fx_1615_longlong_div2_test1();
-	// fx_1615_longlong_div2_test2();
-	// fx_1615_longlong_div2_test3();
-	fx_1615_longlong_div3_test();
+	
+	fx_1615_longlong_div01_test();
+	fx_1615_longlong_div02_test();
+	fx_1615_longlong_div03_test();
+	fx_1615_longlong_div04_test();
+	fx_1615_longlong_div05_test();
+	fx_1615_longlong_div06_test();
+	fx_1615_longlong_div07_test();
+	fx_1615_longlong_div08_test();
+	fx_1615_longlong_div09_test();
+	fx_1615_longlong_div10_test();
+	fx_1615_longlong_div11_test();
+
 
 	/*
 	 for (int i = 0; i < 10; ++i) {
