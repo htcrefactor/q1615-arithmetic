@@ -25,25 +25,27 @@ Sign bit를 포함한 fixed point number의 arithmetic 구현
     + [Functions](#functions)
   * [Makefile](#makefile)
   * [gcc -O flag](#gcc--o-flag)
-    + [-O 옵션별 세부 사항](#-o----------)
-    + [최적화 성능 비교](#---------)
-      - [결과](#--)
-      - [원인 분석](#-----)
-      - [gprof 사용법](#gprof----)
+    + [-O flag options](#-o-flag-options)
+    + [Optimization Results](#optimization-results)
+      - [Theoretical Background](#theoretical-background)
+      - [gprof](#gprof)
   * [Project2](#project2)
     + [Macros](#macros-1)
     + [Functions](#functions-1)
-  * [정확도 테스트](#-------)
-  * [속도 테스트](#------)
+  * [Precision Tests](#precision-tests)
+  * [Performance Speed Tests](#performance-speed-tests)
   * [Sine](#sine)
-    + [sine table](#sine-table)
+    + [Sine Table](#sine-table)
     + [fx_s1615 sine_fx_s1615_longlong(fx_s1615 angle) function에 대하여...](#fx-s1615-sine-fx-s1615-longlong-fx-s1615-angle--function-----)
   * [double vs long long](#double-vs-long-long)
-- [0819 과제](#0819---)
-  * [요구사항 명세](#-------)
-  * [코딩 규칙 검사(MISRA-C 2012)](#---------misra-2012-)
-  * [검사 결과 리포트](#---------)
-- [0820 과제](#0820---)
+- [0819 Assignment](#0819-assignment)
+  * [Requirements Specification](#requirements-specification)
+  * [MISRA-C 2012 Conformity Test](#misra-c-2012-conformity-test)
+  * [Test Results](#test-results)
+- [0820 Assignment](#0820-assignment)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 
 
 ## What is Fixed Point sXXYY?
@@ -208,7 +210,7 @@ dep :
 ```
 
 ### gcc -O flag
-#### -O 옵션별 세부 사항
+#### -O flag options
 `[-Olevel]`
 - O0 : 최적화를 수행하지 않음 (Default)
 - O, -O1 : 코드 크기와 실행 시간을 줄이는 최적화만 수행
@@ -216,17 +218,14 @@ dep :
 - O3 : -O2 최적화에 인라인 함수와 레지스터에 대한 최적화를 추가로 수행
 - Os : -O2 최적화 기능을 사용하지만, 코드 크기를 증가하는 최적화는 제외
 
-#### 최적화 성능 비교
+#### Optimization Results
 for문을 통하여 2,147,483,648(INT_MAX)번의 연산을 반복하는 코드를 작성하고 -O0과 -O2 옵션을 주어 컴파일 한 뒤 실행시간을 측정하였다.
-
-##### 결과
-
 
 ![O2-optimization-result](images/optimization-result.png)
 
 최적화를 하지 않았을 때 for문을 수행하는데 약 5분의 시간이 걸렸으나 -O2 옵션으로 최적화하였을 때 for문을 수행했는가 싶을 정도로 실행시간이 줄어들었음을 확인할 수 있었다.
 
-##### 원인 분석
+##### Theoretical Background
 실제로 코드가 어떻게 최적화 되었는지 확인하기 위해 gcc -S 옵션을 통해 컴파일된 어셈블리 코드를 분석해 보았다.
 ```
 pi@raspberrypi:~/battle_c_1 $ gcc -S -DTEST -lm test.c
@@ -244,7 +243,7 @@ test.s는 main 라벨에서 처음 clock 함수를 호출한다. 이후 L2 라�
 실제로 for문 내부에서 실행되는 코드들은 그 안에서만 연산될 뿐 for문 밖의 코드에 영향을 주지 못한다. 외부 변수에 연산의 결과를 저장하거나 출력하는 코드가 없기 때문이다.   
 -O2 옵션을 주어 컴파일 하였을 때 컴파일러가 이를 확인하고 어셈블리 코드에 포함시키지 않아 극단적인 성능 차이를 보여준 것으로 보인다.
 
-##### gprof 사용법
+##### gprof
 ```
 gcc -pg main.c
 ./a.out #gmon.out is made after running a.out
@@ -301,7 +300,7 @@ gprof
 
 
 
-### 정확도 테스트
+### Precision Tests
 * Multiply
 1. MUL_01
 ![image](images/MUL_01.png)
@@ -340,7 +339,7 @@ DIV_03의 경우 오차율이 조금 증가하지만 범용적으로 사용할 �
 <br>
 <br>
 
-### 속도 테스트
+### Performance Speed Tests
 
 ![image](images/speed-experiment.png)
 
@@ -476,9 +475,9 @@ Index by function name
 <br>
 
 
-## 0819 과제
+## 0819 Assignment
 
-### 요구사항 명세
+### Requirements Specification
 * 목적
 
 double로 input을 받아서 fx_s1615로 변환하여 사칙연산을 수행한다.
@@ -539,7 +538,7 @@ double로 input을 받아서 fx_s1615로 변환하여 사칙연산을 수행한�
 <br>
 
 
-### 코딩 규칙 검사(MISRA-C 2012)
+### MISRA-C 2012 Conformity Test
 총 39였던 오류를 아래의 20개의 오류로 수정하였다.
 
 ```
@@ -550,11 +549,11 @@ double로 input을 받아서 fx_s1615로 변환하여 사칙연산을 수행한�
 ```
 ![0819_capture](/uploads/82b0d00d85a19bd008dacec005b46586/0819_capture.PNG)
 
-### 검사 결과 리포트
+### Test Results
 violations 첨부함
 
 
-## 0820 과제
+## 0820 Assignment
 * 유닛테스트를 통해 커버리지 확인하기
 
 ![0820_TeamProject](/uploads/d2896b245ff5835e5138c144fc64831a/0820_TeamProject.PNG)
