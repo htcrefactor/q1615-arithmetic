@@ -2,6 +2,7 @@
 #include "fx_s1615_double.h"
 #include "fx_1615_longlong.h"
 
+#ifdef MULTIPLE_TIME_TEST
 static void fx_1615_double_mul_test(void) {
     fx_s1615 divisor = 62764;
     fx_s1615 a = 0;
@@ -10,7 +11,6 @@ static void fx_1615_double_mul_test(void) {
         a = FX_S1615_MUL((i), (divisor));
     }
 }
-
 
 static void fx_1615_longlong_mul1_test(void) {
 	fx_s1615 divisor = 62764;
@@ -38,7 +38,9 @@ static void fx_1615_longlong_mul3_test(void) {
 		a=FX_1615_LONGLONG_MUL3((i), (divisor));
 	}
 }
+#endif
 
+#ifdef DIVISION_TIME_TEST
 static void fx_1615_double_test(void) {
     fx_s1615 divisor = 3194858;
     fx_s1615 a = 0;
@@ -74,6 +76,7 @@ static void fx_1615_longlong_div03_test(void) {
 		a=FX_1615_LONGLONG_DIV03((i),(divisor));
 	}
 }
+#endif
 
 
 int main(void) {
@@ -85,7 +88,7 @@ int main(void) {
 	fx_1615_longlong_mul3_test();
 #endif
 
-    
+
 #ifdef DIVISION_TIME_TEST
     fx_1615_double_test();
 	fx_1615_longlong_div01_test();
