@@ -390,6 +390,67 @@ fx_1516_SinTable은 fx_s1516에 맞춰진 표이므로, fx_s1615에 맞춰 변�
 <br>
 <br>
 
+
+
+### double vs long long
+
+* double 과 long long으로 형변환을 하여 곱셈 및 나눗셈을 수행할 때, 어떤 것이 더 빠른지 측정해보았다.
+
+1. multiple test
+
+ 
+ ```
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 63.43      2.00     2.00        1     2.00     2.00  fx_1615_double_mul_test
+ 12.69      2.41     0.40        1     0.40     0.40  fx_1615_longlong_mul1_test
+ 12.05      2.79     0.38        1     0.38     0.38  fx_1615_longlong_mul2_test
+ 12.05      3.17     0.38        1     0.38     0.38  fx_1615_longlong_mul3_test
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) for 0.32% of 3.17 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00    3.17                 main [1]
+                2.00    0.00       1/1           fx_1615_double_mul_test [2]
+                0.40    0.00       1/1           fx_1615_longlong_mul1_test [3]
+                0.38    0.00       1/1           fx_1615_longlong_mul3_test [5]
+                0.38    0.00       1/1           fx_1615_longlong_mul2_test [4]
+-----------------------------------------------
+                2.00    0.00       1/1           main [1]
+[2]     63.3    2.00    0.00       1         fx_1615_double_mul_test [2]
+-----------------------------------------------
+                0.40    0.00       1/1           main [1]
+[3]     12.7    0.40    0.00       1         fx_1615_longlong_mul1_test [3]
+-----------------------------------------------
+                0.38    0.00       1/1           main [1]
+[4]     12.0    0.38    0.00       1         fx_1615_longlong_mul2_test [4]
+-----------------------------------------------
+                0.38    0.00       1/1           main [1]
+[5]     12.0    0.38    0.00       1         fx_1615_longlong_mul3_test [5]
+-----------------------------------------------
+
+Index by function name
+
+   [2] fx_1615_double_mul_test [4] fx_1615_longlong_mul2_test
+   [3] fx_1615_longlong_mul1_test [5] fx_1615_longlong_mul3_test
+
+ ```
+
+[실행 결과 정리]
+* double이 long long으로 곱셈을 실행하는 것 보다 더 많은 시간이 소요된다는 것을 알 수 있었다.
+* fx_s1615로 표현된 값인 a를 8만큼 right shifting 해주고, b를 7만큼 right shifiting 해준 후, 두 값을 곱해주는 fx_1615_longlong_mul3_test의 실행속도가 가장 빠른 것을 알 수 있었다.
+
+<br>
+<br>
+
+
 ## 0819 과제
 
 ### 요구사항 명세
