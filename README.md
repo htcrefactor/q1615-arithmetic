@@ -513,22 +513,24 @@ double로 input을 받아서 fx_s1615로 변환하여 사칙연산을 수행한�
 <br>
 <br>
 
-* 실행 방법
+* 테스트 빌드 및 분석 방법
+    - 다음과 같은 순서로 빌드 후 분석한다.
+        1. ``make DEFINE=D[macro] PG=-pg``
+        2. ``./test``
+        3. ``gprof test``
 
-```
-1. ifdef를 이용하여 macro의 정의에 따라 각각 다른 test가 수행되도록 코드를 구성하였다.
-    [ifdef로 정의된 macro]
-    (1) MULTIPLE_TIME_TEST : 곱셈을 수행하는 경우, double vs long long 시간 테스트
-    (2) DIVISION_TIME_TEST : 나눗셈을 수행하는 경우, double vs long long 시간 테스트
-    (3) SIN_PRECISION_TEST : sine table이 알맞은지 확인하기 위해 시험해주는 테스트
-    (4) FX_MUL_TEST : scanf로 두개의 숫자를 받았을 때, 정의된 4가지 함수로 곱셈을 수행해주는 테스트
-    -->FX_S1615_MUL(a, b), FX_1615_LONGLONG_MUL1(a, b),FX_1615_LONGLONG_MUL2(a, b),FX_1615_LONGLONG_MUL3(a, b)
-    (5) FX_DIV_TEST : scanf로 두개의 숫자를 받았을 때, 정의된 4가지 함수로 나눗셈을 수행해주는 테스트
-    -->FX_S1615_DIV(a, b), FX_1615_LONGLONG_DIV01(a,b),FX_1615_LONGLONG_DIV02(a,b),FX_1615_LONGLONG_DIV03(a,b)
 
-2. make 수행
-    * make CFLAGS=-D[MACRO]
-    * ./test 로 결과 확인하기
+    - 조건부 컴파일을 이용하여 macro의 정의에 따라 다른 test가 수행되도록 코드를 구성하였다.
+        ```
+        [ifdef로 정의된 macro]
+        (1) MULTIPLE_TIME_TEST : 곱셈을 수행하는 경우, double vs long long 시간 테스트
+        (2) DIVISION_TIME_TEST : 나눗셈을 수행하는 경우, double vs long long 시간 테스트
+        (3) SIN_PRECISION_TEST : sine table이 알맞은지 확인하기 위해 시험해주는 테스트
+        (4) FX_MUL_TEST : scanf로 두개의 숫자를 받았을 때, 정의된 4가지 함수로 곱셈을 수행해주는 테스트
+        -->FX_S1615_MUL(a, b), FX_1615_LONGLONG_MUL1(a, b),FX_1615_LONGLONG_MUL2(a, b),FX_1615_LONGLONG_MUL3(a, b)
+        (5) FX_DIV_TEST : scanf로 두개의 숫자를 받았을 때, 정의된 4가지 함수로 나눗셈을 수행해주는 테스트
+        -->FX_S1615_DIV(a, b), FX_1615_LONGLONG_DIV01(a,b),FX_1615_LONGLONG_DIV02(a,b),FX_1615_LONGLONG_DIV03(a,b)
+    ```
 
 
 ```
