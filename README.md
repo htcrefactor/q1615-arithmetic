@@ -387,16 +387,47 @@ fx_1516_SinTable은 fx_s1516에 맞춰진 표이므로, fx_s1615에 맞춰 변�
 
 ### 요구사항 명세
 * 목적
+
 double로 input을 받아서 fx_s1615로 변환하여 사칙연산을 수행한다.
 
+<br>
+<br>
 
 * 제공 기능
-함수 설명해주고 얘는 어디에 적합하고 설명해주기
+
+
+| 매크로 및 함수 이름 | 기능 | 사용에 적합한 범위 |
+| ---- | ---- | ---- |
+| FX_S1615_ADD(a,b) | fx_s1615로 표현된 두 값을 더해준다.  |  |
+| FX_S1615_SUB(a,b) | fx_s1615로 표현된 두 값을 빼준다. |  |
+| FX_S1615_MUL(a,b) | fx_s1615로 표현된 두 값을 곱해준다. |  |
+| FX_S1615_DIV(a,b) | fx_s1615로 표현된 두 값을 나눠준다. |  |
+| ---- | ---- | ---- |
+| fx_s1615 sine_fx_s1615_int(fx_s1615 a) | fx_s1615로 표현된 값의 sin 을 구해준다.  |  |
+| fx_s1615 sqrt_fx_s1615_int(fx_s1615 a) | fx_s1615로 표현된 값의 제곱근을 구해준다. |  |
+| fx_s1615 power_fx_s1615_int(fx_s1615 a, double n) | fx_s1615로 표현된 값의 n승을 구해준다. |  |
+| ---- | ---- | ---- |
+| FX_1615_LONGLONG_MUL1(a,b) | fx_s1615로 표현된 값을 long long으로 cast 해준 수를 곱한 후, 15만큼 right shifting 해주어 곱셈을 수행한다. |  |
+| FX_1615_LONGLONG_MUL2(a,b) | fx_s1615로 표현된 값을 곱해주고 15만큼 right shifting해주어 곱셈을 수행한다. |  |
+| FX_1615_LONGLONG_MUL3(a,b) | fx_s1615로 표현된 값인 a를 8만큼 right shifting 해주고, b를 7만큼 right shifiting 해준 후, 두 값을 곱해주어 곱셈을 수행한다. |  |
+| ---- | ---- | ---- |
+| FX_1615_LONGLONG_DIV01(a,b) | fx_s1615로 표현된 값을 long long으로 cast 해주고, a와 b를 각각 15만큼 right shfiting 하고 a 와 b를 나눠준 후, 15만큼 left shifting 해주어 나눗셈을 수행한다. |  |
+| FX_1615_LONGLONG_DIV02(a,b) | fx_s1615로 표현된 값을 long long으로 cast 해주고, a를 15만큼 left shfiting 하고 b와 나눠주어 나눗셈을 수행한다. |  |
+| FX_1615_LONGLONG_DIV03(a,b) | fx_s1615로 표현된 값인 a를 5만큼 left shifting 해주고, b를 6만큼 right shfiting 하고 나눠준 후, 4만큼 left shifting 해주어 나눗셈을 수행한다. |  |
+
+
+
+
+
+<br>
+<br>
 
 * 실행 방법
+
 make로 실행
 
-
+<br>
+<br>
 
 
 ### 코딩 규칙 검사(MISRA 2012)
