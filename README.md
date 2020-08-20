@@ -44,7 +44,6 @@ Sign bit를 포함한 fixed point number의 arithmetic 구현
   * [Test Results](#test-results)
 - [0820 Assignment](#0820-assignment)
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 
