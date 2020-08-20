@@ -309,44 +309,37 @@ DIV_03의 경우 오차율이 조금 증가하지만 범용적으로 사용할 �
 <br>
 
 ### 속도 테스트
+
 ![image](images/speed-experiment.png)
+
 * 32bit 실행 결과
 
 1. Multiply
 
-    MUL_03 < MUL_02 < MUL_01
+    MUL_03 = MUL_02 < MUL_01
 
-<br>
 
-32 bit에서 곱셈을 실행한 결과, cast하지 않은 것들에서 빠른 성능을 보인다는 것을 알 수 있었다.
-
-<br>
-<br>
 
 2. Division    
 
-    DIV_01 = DIV_03 < DIV_02
+    DIV_03 < DIV_02 < DIV_01
 
 
-<br>
 <br>
 
 * 64bit 실행 결과
 1. Multiply     
 
-    MUL_03 = MUL_02 < MUL_01
+    MUL_03 < MUL_02 < MUL_01
 
 
-<br>
-<br>
 
 2. Division      
 
-    DIV_02 < DIV_03 < DIV_01
+    DIV_01 = DIV_02 < DIV_03
 
 <br>
 <br>
-
 
 ### Sin
 
