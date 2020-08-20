@@ -1,15 +1,15 @@
 SRCS := test.c fx_s1615_double.c fx_1615_longlong.c
 OBJS := $(SRCS:.c=.o)
-CC := gcc	# pre-defined macro can be redefined!
-#CFLAGS = -c -Wall -g
-CFLAGS = -Wall
+CFLAGS := -c -Wall -lm
+PG := 
+DEFINE := 
 
 test : $(OBJS)
-	$(CC) -o $@ $^ -lm
+	$(CC) -o $@ $^ -lm $(PG)
 
 # default rule
 .c.o : 
-	$(CC) $(CFLAGS) $< -lm
+	$(CC) $(CFLAGS) $(DEFINE) $<
 
 # dummy target - no dependency 
 clean :
