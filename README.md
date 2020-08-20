@@ -6,12 +6,12 @@ Sign bit를 포함한 fixed point number의 arithmetic 구현
 
 ## Role
 
-| 이름 | 학번 | 역할 |
-| ---- | ---- | ---- |
-| 고예준 | 201820742 | README 파일 작성 |
-| 김지원 | 201720771 | Fixed point arithmetic 구현 |
-| 조시호 | 201520659 | README 파일 작성 |
-| 최형택 | 201620989 | README 파일 교정 |
+| 이름 | 학번 | 
+| ---- | ---- |
+| 고예준 | 201820742 | 
+| 김지원 | 201720771 | 
+| 조시호 | 201520659 | 
+| 최형택 | 201620989 | 
 <br>
 
 ## What is Fixed Point sXXYY?
@@ -246,13 +246,17 @@ gprof
 
     fx_s1615로 표현된 값을 long long으로 cast 해주고, a와 b를 각각 15만큼 right shfiting 하고 a 와 b를 나눠준 후, 15만큼 left shifting 해주는  macro  
     
-* `#define FX_1615_LONGLONG_DIV02(a, b) (fx_s1615)(((fixed64)(a) << 15) / (b))`
+    
+* `#define FX_1615_LONGLONG_DIV02(a, b) (((a << 5) / (b >> 6)) << 4)`
+
+    fx_s1615로 표현된 값인 a를 5만큼 left shifting 해주고, b를 6만큼 right shfiting 하고 나눠준 후, 4만큼 left shifting 해주는  macro  
+    
+    
+* `#define FX_1615_LONGLONG_DIV03(a, b) (fx_s1615)(((fixed64)(a) << 15) / (b))`
 
     fx_s1615로 표현된 값을 long long으로 cast 해주고, a를 15만큼 left shfiting 하고 b와 나눠주는  macro  
     
-* `#define FX_1615_LONGLONG_DIV03(a, b) (((a << 5) / (b >> 6)) << 4)`
-
-    fx_s1615로 표현된 값인 a를 5만큼 left shifting 해주고, b를 6만큼 right shfiting 하고 나눠준 후, 4만큼 left shifting 해주는  macro  
+    
     
 <br>
 
