@@ -3,57 +3,63 @@
 #include "fx_1615_longlong.h"
 //#include <time.h>
 #include <limits.h>
-static void fx_1615_longlong_mul1_test(void);
-static void fx_1615_longlong_mul2_test(void);
-static void fx_1615_longlong_mul3_test(void);
-
-static void fx_1615_longlong_mul1_test(void) {
-	fx_s1615 divisor = 62764;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a = FX_1615_LONGLONG_MUL1((i), (divisor));
-	}
-}
-
-static void fx_1615_longlong_mul2_test(void) {
-	fx_s1615 divisor = 62764;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_MUL2((i), (divisor));
-	}
-}
-
-static void fx_1615_longlong_mul3_test(void) {
-	fx_s1615 divisor = 62764;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_MUL3((i), (divisor));
-	}
-}
-
-static void fx_1615_longlong_div01_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV01((i),(divisor));
-	}
-}
-
-static void fx_1615_longlong_div02_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV02((i),(divisor));
-	}
-}
-
-static void fx_1615_longlong_div03_test(void) {
-	fx_s1615 divisor = 3194858;
-	fx_s1615 a = 0;
-	for (int i = 0; i < 100000000; ++i) {
-		a=FX_1615_LONGLONG_DIV03((i),(divisor));
-	}
-}
+//static void fx_1615_longlong_mul1_test(void);
+//static void fx_1615_longlong_mul2_test(void);
+//static void fx_1615_longlong_mul3_test(void);
+//
+//static void fx_1615_longlong_mul1_test(void) {
+//	fx_s1615 divisor = 62764;
+//	fx_s1615 a = 0;
+//	int i=0;
+//	for (i = 0; i < 100000000; ++i) {
+//		a = FX_1615_LONGLONG_MUL1((i), (divisor));
+//	}
+//}
+//
+//static void fx_1615_longlong_mul2_test(void) {
+//	fx_s1615 divisor = 62764;
+//	fx_s1615 a = 0;
+//	int i=0;
+//	for (i = 0; i < 100000000; ++i) {
+//		a=FX_1615_LONGLONG_MUL2((i), (divisor));
+//	}
+//}
+//
+//static void fx_1615_longlong_mul3_test(void) {
+//	fx_s1615 divisor = 62764;
+//	fx_s1615 a = 0;
+//	int i=0;
+//	for ( i = 0; i < 100000000; ++i) {
+//		a=FX_1615_LONGLONG_MUL3((i), (divisor));
+//	}
+//}
+//
+//static void fx_1615_longlong_div01_test(void) {
+//	fx_s1615 divisor = 3194858;
+//	fx_s1615 a = 0;
+//	int i=0;
+//	for (i = 0; i < 100000000; ++i) {
+//		a=FX_1615_LONGLONG_DIV01((i),(divisor));
+//	}
+//}
+//
+//static void fx_1615_longlong_div02_test(void) {
+//	fx_s1615 divisor = 3194858;
+//	fx_s1615 a = 0;
+//	int i=0;
+//	for ( i = 0; i < 100000000; ++i) {
+//		a=FX_1615_LONGLONG_DIV02((i),(divisor));
+//	}
+//}
+//
+//static void fx_1615_longlong_div03_test(void) {
+//	fx_s1615 divisor = 3194858;
+//	fx_s1615 a = 0;
+//	int i=0;
+//	for ( i = 0; i < 100000000; ++i) {
+//		a=FX_1615_LONGLONG_DIV03((i),(divisor));
+//	}
+//}
 
 // static void fx_1615_longlong_div04_test(void) {
 // 	fx_s1615 divisor = 3194858;
@@ -120,27 +126,27 @@ static void fx_1615_longlong_div03_test(void) {
 // }
 
 int main(void) {
-	const fx_s1615 fx_1615_SinTable[91] = { 0, 571, 1143, 1714, 2285, 2855,
-			3425, 3993, 4560, 5126, 5690, 6252, 6812, 7371, 7927, 8480, 9032,
-			9580, 10125, 10668, 11207, 11743, 12275, 12803, 13327, 13848,
-			14364, 14876, 15383, 15886, 16384, 16876, 17364, 17846, 18323,
-			18794, 19260, 19720, 20173, 20621, 21062, 21497, 21926, 22347,
-			22762, 23170, 23571, 23964, 24351, 24730, 25101, 25465, 25821,
-			26169, 26509, 26841, 27165, 27481, 27788, 28087, 28377, 28659,
-			28932, 29196, 29451, 29697, 29935, 30163, 30381, 30591, 30791,
-			30982, 31164, 31336, 31498, 31651, 31794, 31928, 32051, 32165,
-			32270, 32364, 32449, 32523, 32588, 32643, 32688, 32723, 32748,
-			32763, 32768 
-	};
+//	const fx_s1615 fx_1615_SinTable[91] = { 0, 571, 1143, 1714, 2285, 2855,
+//			3425, 3993, 4560, 5126, 5690, 6252, 6812, 7371, 7927, 8480, 9032,
+//			9580, 10125, 10668, 11207, 11743, 12275, 12803, 13327, 13848,
+//			14364, 14876, 15383, 15886, 16384, 16876, 17364, 17846, 18323,
+//			18794, 19260, 19720, 20173, 20621, 21062, 21497, 21926, 22347,
+//			22762, 23170, 23571, 23964, 24351, 24730, 25101, 25465, 25821,
+//			26169, 26509, 26841, 27165, 27481, 27788, 28087, 28377, 28659,
+//			28932, 29196, 29451, 29697, 29935, 30163, 30381, 30591, 30791,
+//			30982, 31164, 31336, 31498, 31651, 31794, 31928, 32051, 32165,
+//			32270, 32364, 32449, 32523, 32588, 32643, 32688, 32723, 32748,
+//			32763, 32768
+//	};
 
-	fx_1615_longlong_mul1_test();
-	fx_1615_longlong_mul2_test();
-	fx_1615_longlong_mul3_test();
-
-	
-	fx_1615_longlong_div01_test();
-	fx_1615_longlong_div02_test();
-	fx_1615_longlong_div03_test();
+//	fx_1615_longlong_mul1_test();
+//	fx_1615_longlong_mul2_test();
+//	fx_1615_longlong_mul3_test();
+//
+//
+//	fx_1615_longlong_div01_test();
+//	fx_1615_longlong_div02_test();
+//	fx_1615_longlong_div03_test();
 	// fx_1615_longlong_div04_test();
 	// fx_1615_longlong_div05_test();
 	// fx_1615_longlong_div06_test();
@@ -180,7 +186,7 @@ int main(void) {
 	 }
 	 }
 	 */
-	/* 오차가 발생하는 주기 찾기
+
 	 double da;
 	 double db;
 	 scanf("%lf %lf",&da, &db);
@@ -204,18 +210,18 @@ int main(void) {
 	 da*db - FX_S1615_INT_TO_DOUBLE(fc));
 
 	 printf("\nTest division\n");
-	 fc =FX_1615_LONGLONG_DIV1(fa,fb);
+	 fc =FX_1615_LONGLONG_DIV01(fa,fb);
 	 printf("Exact answer = %f func result = %f, error = %f\n",da/db, FX_S1615_INT_TO_DOUBLE(fc),
 	 da/db - FX_S1615_INT_TO_DOUBLE(fc));
 
-	 fc =FX_1615_LONGLONG_DIV2(fa,fb);
+	 fc =FX_1615_LONGLONG_DIV02(fa,fb);
 	 printf("Exact answer = %f func result = %f, error = %f\n",da/db, FX_S1615_INT_TO_DOUBLE(fc),
 	 da/db - FX_S1615_INT_TO_DOUBLE(fc));
 
-	 fc =FX_1615_LONGLONG_DIV3(fa,fb);
+	 fc =FX_1615_LONGLONG_DIV03(fa,fb);
 	 printf("Exact answer = %f func result = %f, error = %f\n",da/db, FX_S1615_INT_TO_DOUBLE(fc),
 	 da/db - FX_S1615_INT_TO_DOUBLE(fc));
-	 */
+
 
 	/*
 	 clock_t start = clock();
