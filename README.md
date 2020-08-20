@@ -188,7 +188,9 @@ dep :
 for문을 통하여 2,147,483,648(INT_MAX)번의 연산을 반복하는 코드를 작성하고 -O0과 -O2 옵션을 주어 컴파일 한 뒤 실행시간을 측정하였다.
 
 ##### 결과
-![O2-optimization-result](optimization-result.png)
+
+
+![O2-optimization-result](images/optimization-result.png)
 
 최적화를 하지 않았을 때 for문을 수행하는데 약 5분의 시간이 걸렸으나 -O2 옵션으로 최적화하였을 때 for문을 수행했는가 싶을 정도로 실행시간이 줄어들었음을 확인할 수 있었다.
 
@@ -202,7 +204,9 @@ pi@raspberrypi:~/battle_c_1 $ gcc -S -O2 -DTEST -lm test.c -o test_optimization.
 복잡한 어셈블리 코드를 전부 해석하지 않고 for문의 시작 시간과 끝난 시간을 알기 위해 호출했던 clock 함수의 위치를 알 수 있다면 그 사이에 수행되는 어셈블리 코드를 통해 최적화 여부를 알 수 있을 것이다.   
 실제로 어셈블리 코드는 아직 link 되어있지 않기 때문에 clock 함수의 시그니처가 그대로 남아있었다.
 
-![O2-optimization-assembly](O2-optimization-assembly.png)
+![O2-optimization-assembly](images/O2-optimization-assembly.png)
+
+
 test.s는 main 라벨에서 처음 clock 함수를 호출한다. 이후 L2 라벨로 이동한뒤 C코드에서 for문에 해당하는 L3 라벨로 이동하고 70줄 가량의 어셈블리 코드를 실행하고 나서야 clock 함수를 호출한다. 라벨을 이동하는 것을 제외하면 C코드와 로직상 다른점이 없다.   
 그런데 test_optimization.s는 main 라벨에서 첫 clock 함수를 호출하고 하나의 mov 명령을 수행하자마자 다시 clock 함수를 호출한다. 최적화의 영향인지 for문이 그대로 사라져버렸다.   
 실제로 for문 내부에서 실행되는 코드들은 그 안에서만 연산될 뿐 for문 밖의 코드에 영향을 주지 못한다. 외부 변수에 연산의 결과를 저장하거나 출력하는 코드가 없기 때문이다.   
@@ -264,13 +268,13 @@ gprof
 ### 정확도 테스트
 * Multiply
 1. MUL_01
-![image](MUL_01.png)
+![image](images/MUL_01.png)
 
 2. MUL_02
-![image](MUL_02.png)
+![image](images/MUL_02.png)
 
 3. MUL_03
-![image](MUL_03.png)
+![image](images/MUL_03.png)
 
 정확도 테스트를 위해 엑셀표로 확인한 결과,
 MUL_01의 정확도는 ~하고
@@ -283,13 +287,13 @@ MUL_03의 정확도는 ~하다는 결과가 나왔다.
 
 * Division
 1. DIV_01
-![image](DIV_01.png)
+![image](images/DIV_01.png)
 
 2. DIV_02
-![image](DIV_02.png)
+![image](images/DIV_02.png)
 
 3. DIV_03
-![image](DIV_03.png)
+![image](images/DIV_03.png)
 
 정확도 테스트를 위해 엑셀표로 확인한 결과,
 DIV_01의 정확도는 ~하고
@@ -302,7 +306,7 @@ DIV_03의 정확도는 ~하다는 결과가 나왔다.
 <br>
 
 ### 속도 테스트
-![image](speed-experiment.png)
+![image](images/speed-experiment.png)
 * 32bit 실행 결과
 
 1. Multiply
@@ -443,3 +447,13 @@ make로 실행
 
 ### 검사 결과 리포트
 violations 첨부함
+
+
+## 0820 과제
+* 유닛테스트를 통해 커버리지 확인하기
+
+![0820_TeamProject](/uploads/d2896b245ff5835e5138c144fc64831a/0820_TeamProject.PNG)
+
+
+CodeScroll Controller Tester 에서 유닛테스트를 실행해서 커버리지를 확인한 결과, 
+분기가 없는 함수들이기 때문에 100이 나오는 것을 확인할 수 있었다.
