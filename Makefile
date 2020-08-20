@@ -2,7 +2,7 @@ SRCS := test.c fx_s1615_double.c fx_1615_longlong.c
 OBJS := $(SRCS:.c=.o)
 CC := gcc	# pre-defined macro can be redefined!
 #CFLAGS = -c -Wall -g
-CFLAGS = -c -DTEST -Wall
+CFLAGS = -Wall
 
 test : $(OBJS)
 	$(CC) -o $@ $^ -lm
